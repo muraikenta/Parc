@@ -1,12 +1,16 @@
 const express = require('express')
+const path = require('path')
+const ejs = require('ejs')
 const app = express()
 
-app.set('views', '../public')
-app.use(express.static('../public'))
+const publicPath = path.join(__dirname, '..', 'public')
+app.set('views', publicPath)
+app.use(express.static(publicPath))
+app.set('view engine', 'ejs')
 
-app.get('/', (req, res) => {
-  res.render('index.html')
-});
+app.get('/*', (req, res) => {
+  res.render('index')
+})
 
 app.listen(3000, () => {
   console.log('Example app listening on port 3000!')
