@@ -1,8 +1,11 @@
 const express = require('express')
 const app = express()
 
+app.set('views', '../public')
+app.use(express.static('../public'))
+
 app.get('/', (req, res) => {
-  res.send('Hello World')
+  res.render('index.html')
 });
 
 app.listen(3000, () => {
