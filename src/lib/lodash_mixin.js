@@ -1,31 +1,20 @@
 import _ from 'lodash'
 
-_.mixin({
-  camelcaseKeys: (obj) => {
+const mapCaseKeysCreator = (keyMapper) => {
+  const mapCaseKeys = (obj) => {
     const newObj = _.mapKeys(_.mapValues(obj, (value) => {
-      return _.isObjectLike(value) ? _.camelcaseKeys(value) : value
+      return _.isObjectLike(value) ? mapCaseKeys(value) : value
     }), (value, key) => {
-      return _.camelCase(key)
-    })
-
-    return _.isArray(obj) ? _.toArray(newObj) : newObj
-  },
-  snakecaseKeys: (obj) => {
-    const newObj = _.mapKeys(_.mapValues(obj, (value) => {
-      return _.isObjectLike(value) ? _.snakecaseKeys(value) : value
-    }), (value, key) => {
-      return _.snakeCase(key)
-    })
-
-    return _.isArray(obj) ? _.toArray(newObj) : newObj
-  },
-  kebabCaseKeys: (obj) => {
-    const newObj = _.mapKeys(_.mapValues(obj, (value) => {
-      return _.isObjectLike(value) ? _.kebabCaseKeys(value) : value
-    }), (value, key) => {
-      return _.kebabCase(key)
+      return keyMapper(key)
     })
 
     return _.isArray(obj) ? _.toArray(newObj) : newObj
   }
+  return mapCaseKeys
+}
+
+_.mixin({
+  camelcaseKeys: mapCaseKeysCreator(_.camelCase),
+  snakecaseKeys: mapCaseKeysCreator(_.snakeCase),
+  kebabCaseKeys: mapCaseKeysCreator(_.kebabCase),
 })
