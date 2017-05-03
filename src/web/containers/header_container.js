@@ -18,6 +18,7 @@ const styles = {
   postIcon: {
     height: '80%',
     cursor: 'pointer'
+    marginLeft: '15'
   },
 }
 
@@ -45,6 +46,7 @@ class Header extends React.PureComponent {
       <div>
         <nav style={styles.nav}>
           <h1 style={styles.logo}>Parc</h1>
+          <img src="/images/mypage_icon.png" style={styles.postIcon} />
           <img
             src="/images/post_icon.png"
             style={styles.postIcon}
