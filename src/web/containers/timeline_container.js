@@ -7,8 +7,8 @@ const mapStateToProps = (state) => ({
 })
 
 class TimelineContainer extends React.PureComponent {
-  componentDidMount() {
-    const store = this.props.store
+  componentWillMount() {
+    const dispatch = this.props.dispatch
     // dispatch action to fetch post data
   }
 
