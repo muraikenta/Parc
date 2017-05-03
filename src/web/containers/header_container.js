@@ -17,8 +17,8 @@ const styles = {
   },
   postIcon: {
     height: '80%',
-    cursor: 'pointer'
-    marginLeft: '15'
+    cursor: 'pointer',
+    marginLeft: 15,
   },
 }
 
