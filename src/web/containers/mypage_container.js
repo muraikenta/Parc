@@ -1,14 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import MyPage from '../components/mypage'
 
-class MyPage extends React.PureComponent {
+class MyPageContainer extends React.PureComponent {
   render() {
     return (
-      <div>
-        <h1>にんじゃわんこ</h1>
-      </div>
+      <MyPage />
     )
   }
 }
-
-export default connect()(MyPage)
+export default connect()(MyPageContainer)
