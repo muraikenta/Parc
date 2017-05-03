@@ -19,4 +19,13 @@ _.mixin({
 
     return _.isArray(obj) ? _.toArray(newObj) : newObj
   },
+  kebabCaseKeys: (obj) => {
+    const newObj = _.mapKeys(_.mapValues(obj, (value) => {
+      return _.isObjectLike(value) ? _.kebabCaseKeys(value) : value
+    }), (value, key) => {
+      return _.kebabCase(key)
+    })
+
+    return _.isArray(obj) ? _.toArray(newObj) : newObj
+  }
 })
