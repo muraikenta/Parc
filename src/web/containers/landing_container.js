@@ -19,7 +19,6 @@ class Landing extends React.PureComponent {
   }
 
   render() {
-    console.log(this.state.isModalOpen)
     return (
       <div>
         <h2>エンジニアが集まる場所</h2>
