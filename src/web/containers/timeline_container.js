@@ -1,20 +1,33 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Timeline from '../components/timeline'
+import {fetchPosts} from '../../actions/post'
 
 const mapStateToProps = (state) => ({
-  posts: state.posts,
+  posts: state.posts.items,
+  isFetching: state.posts.isFetching,
+  error: state.posts.error,
 })
 
 class TimelineContainer extends React.PureComponent {
   componentWillMount() {
     const dispatch = this.props.dispatch
-    // dispatch action to fetch post data
+    dispatch(fetchPosts())
   }
 
   render() {
+    const {
+      posts,
+      isFetching,
+      error,
+    } = this.props
+
     return (
-      <Timeline />
+      <div>
+        {isFetching && <h1>Fetching!!</h1>}
+        {error && <h1>{error}</h1>}
+        <Timeline posts={posts} />
+      </div>
     )
   }
 }
