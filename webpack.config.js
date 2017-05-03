@@ -7,7 +7,7 @@ if (!_.isEmpty(process.env.NODE_ENV) && !_.includes(validEnvs, process.env.NODE_
 }
 
 module.exports = {
-  entry: ["./src/index.js"],
+  entry: ["./src/web/index.js"],
   output: {
     path: __dirname + "/public/scripts",
     filename: "bundle.js"
