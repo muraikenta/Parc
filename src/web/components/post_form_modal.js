@@ -13,8 +13,8 @@ class PostFormModal extends React.PureComponent {
   render() {
     return (
       <Modal
-        isOpen={this.props.isPostFormModalOpen}
-        onRequestClose={this.props.closePostFormModal}
+        isOpen={this.props.isOpen}
+        onRequestClose={this.props.onRequestClose}
         contentLabel='PostFormModal'
       >
         <textarea

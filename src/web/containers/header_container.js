@@ -52,8 +52,8 @@ class Header extends React.PureComponent {
           />
         </nav>
         <PostFormModal
-          isPostFormModalOpen={this.state.isPostFormModalOpen}
-          closePostFormModal={this.closePostFormModal.bind(this)}
+          isOpen={this.state.isPostFormModalOpen}
+          onRequestClose={this.closePostFormModal.bind(this)}
         />
       </div>
     )
