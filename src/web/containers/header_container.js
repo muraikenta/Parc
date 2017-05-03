@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import PostFormModal from '../components/post_form_modal'
 
 const styles = {
   nav: {
@@ -14,16 +15,47 @@ const styles = {
     margin: 0,
     marginRight: 'auto',
   },
-  postIcon: {height: '80%'},
+  postIcon: {
+    height: '80%',
+    cursor: 'pointer'
+  },
 }
 
 class Header extends React.PureComponent {
+  constructor() {
+    super()
+    this.state = {
+      isPostFormModalOpen: false,
+    }
+  }
+
+  openPostFormModal() {
+    if (this.state.isPostFormModalOpen) return
+    this.setState({isPostFormModalOpen: true})
+  }
+
+  closePostFormModal() {
+    if (!this.state.isPostFormModalOpen) return
+    this.setState({isPostFormModalOpen: false})
+  }
+
+
   render() {
     return (
-      <nav style={styles.nav}>
-        <h1 style={styles.logo}>Parc</h1>
-        <img src="/images/post_icon.png" style={styles.postIcon} />
-      </nav>
+      <div>
+        <nav style={styles.nav}>
+          <h1 style={styles.logo}>Parc</h1>
+          <img
+            src="/images/post_icon.png"
+            style={styles.postIcon}
+            onClick={this.openPostFormModal.bind(this)}
+          />
+        </nav>
+        <PostFormModal
+          isPostFormModalOpen={this.state.isPostFormModalOpen}
+          closePostFormModal={this.closePostFormModal.bind(this)}
+        />
+      </div>
     )
   }
 
