@@ -17,4 +17,4 @@ const PrivateRoute = ({component: Component, isSignedIn, ...rest}) => (
   )} />
 )
 
-export default connect(mapStateToProps, null, null, {pure: true})(PrivateRoute)
+export default connect(mapStateToProps, null, null, {pure: false})(PrivateRoute)

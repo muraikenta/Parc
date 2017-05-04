@@ -7,7 +7,7 @@ const mapStateToProps = (state, ownProps) => {
   return {...ownProps, isSignedIn}
 }
 
-const OnlyBeforeSignedinRoute = ({component: Component, isSignedIn, ...rest}) => (
+const OnlyBeforeSignedInRoute = ({component: Component, isSignedIn, ...rest}) => (
   <Route {...rest} render={(props) => (
     isSignedIn ? (
       <Redirect to='/timeline' />
@@ -17,4 +17,4 @@ const OnlyBeforeSignedinRoute = ({component: Component, isSignedIn, ...rest}) =>
   )}/>
 )
 
-export default connect(mapStateToProps, null, null, {pure: true})(OnlyBeforeSignedinRoute)
+export default connect(mapStateToProps, null, null, {pure: false})(OnlyBeforeSignedInRoute)

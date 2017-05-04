@@ -1,5 +1,5 @@
-import _OnlyBeforeSignedinRoute from './only_before_signin_router'
+import _OnlyBeforeSignedInRoute from './only_before_signin_router'
 import _PrivateRoute from './private_router'
 
-export const OnlyBeforeSignedinRoute = _OnlyBeforeSignedinRoute
+export const OnlyBeforeSignedInRoute = _OnlyBeforeSignedInRoute
 export const PrivateRoute = _PrivateRoute

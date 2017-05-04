@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom'
 
 import {
-  OnlyBeforeSignedinRoute,
+  OnlyBeforeSignedInRoute,
   PrivateRoute,
 } from '../containers/router'
 
@@ -22,7 +22,7 @@ const Root = ({store}) => (
       <div>
         <Header />
         <div style={{paddingTop: 50}}>
-          <OnlyBeforeSignedinRoute path='/' exact={true} component={Landing} />
+          <OnlyBeforeSignedInRoute path='/' exact={true} component={Landing} />
           <PrivateRoute path='/timeline' component={Timeline} />
           <PrivateRoute path='/user/:id' component={MyPage} />
         </div>
