@@ -12,8 +12,7 @@ export const ActionTypes = keyMirror({
   POST_FORM__OPEN: null,
   POST_FORM__UPDATE_VALUE: null,
 
-  MODAL__OPEN_SIGNUP: null,
-  MODAL__OPEN_LOGIN: null,
+  MODAL__OPEN: null,
   MODAL__CLOSE: null,
 })
 

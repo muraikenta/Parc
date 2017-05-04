@@ -1,25 +1,23 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import {openSignupModal, openLoginModal, closeModal} from '../../actions/modal'
+import {UserModalTypes} from '../../constants/app'
+import {openModal, closeModal} from '../../actions/modal'
 import {signup, signin} from '../../actions/session'
 import UserModal from '../components/user_modal'
 
 const mapStateToProps = (state) => ({
   isModalOpen: state.modal.isModalOpen,
-  displayModalType: state.modal.displayModalType,
+  identifier: state.modal.identifier,
 })
 
 const mapDispatchToProps = (dispatch, history) => {
   return {
-    openSignupModal: () => {
-      dispatch(openSignupModal())
+    openModal: (identifier) => {
+      dispatch(openModal(identifier))
     },
-    openLoginModal: () => {
-      dispatch(openLoginModal())
-    },
-    closeModal: () => {
-      dispatch(closeModal())
+    closeModal: (identifier) => {
+      dispatch(closeModal(identifier))
     },
     signup: (name, email, password) => {
       dispatch(signup({name, email, password}, () => { history.push('/timeline') }))
@@ -37,15 +35,14 @@ class Landing extends React.PureComponent {
         <h2>エンジニアが集まる場所</h2>
         <button
           type='button'
-          onClick={() => this.props.openSignupModal()}
+          onClick={() => this.props.openModal(UserModalTypes.SIGNUP)}
         >
           アカウント作成
         </button>
         <UserModal
           isModalOpen={this.props.isModalOpen}
-          displayModalType={this.props.displayModalType}
-          openSignupModal={this.props.openSignupModal}
-          openLoginModal={this.props.openLoginModal}
+          identifier={this.props.identifier}
+          openModal={this.props.openModal}
           closeModal={this.props.closeModal}
           signup={this.props.signup}
           signin={this.props.signin}

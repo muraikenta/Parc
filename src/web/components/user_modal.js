@@ -63,16 +63,15 @@ class UserModal extends React.PureComponent {
   render() {
     const {
       isModalOpen,
-      displayModalType,
-      openSignupModal,
-      openLoginModal,
+      identifier,
+      openModal,
       closeModal,
       signup,
       signin,
     } = this.props
 
     const displayModal = (() => {
-      switch (displayModalType) {
+      switch (identifier) {
         case UserModalTypes.SIGNUP:
           return (
             <div>
@@ -101,7 +100,7 @@ class UserModal extends React.PureComponent {
               />
               <br />
               <span
-                onClick={() => openLoginModal()}
+                onClick={() => openModal(UserModalTypes.LOGIN)}
               >
                 <span style={{color: 'blue', cursor: 'pointer'}}>ログイン</span>はこちら
               </span>
@@ -129,7 +128,7 @@ class UserModal extends React.PureComponent {
               />
               <br />
               <span
-                onClick={() => openSignupModal()}
+                onClick={() => openModal(UserModalTypes.SIGNUP)}
               >
                 <span style={{color: 'blue', cursor: 'pointer'}}>新規登録</span>はこちら
               </span>
@@ -141,7 +140,7 @@ class UserModal extends React.PureComponent {
     return (
       <Modal
         isOpen={isModalOpen}
-        onRequestClose={closeModal}
+        onRequestClose={() => closeModal(identifier)}
         contentLabel='modal'
         style={styles.modal}
       >

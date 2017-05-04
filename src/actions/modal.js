@@ -1,19 +1,15 @@
 import {ActionTypes} from '../constants/app'
 
-export const openSignupModal = () => {
+export const openModal = (identifier) => {
   return {
-    type: ActionTypes.MODAL__OPEN_SIGNUP,
+    type: ActionTypes.MODAL__OPEN,
+    identifier,
   }
 }
 
-export const openLoginModal = () => {
-  return {
-    type: ActionTypes.MODAL__OPEN_LOGIN,
-  }
-}
-
-export const closeModal = () => {
+export const closeModal = (identifier) => {
   return {
     type: ActionTypes.MODAL__CLOSE,
+    identifier,
   }
 }
