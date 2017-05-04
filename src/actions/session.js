@@ -27,7 +27,7 @@ export const fetchMe = ({uid, accessToken, client}) => (dispatch) => {
      .then((res) => { dispatch(setMe(res.data.data)) })
      .catch((_e) => {
        Cookies.remove('authData')
-       dispatch(setIsSignedOut())
+       dispatch(deleteSession())
      })
 }
 

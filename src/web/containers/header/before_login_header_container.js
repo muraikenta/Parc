@@ -43,7 +43,6 @@ class BeforeLoginHeader extends React.PureComponent {
       </div>
     )
   }
-
 }
 
 export default connect()(BeforeLoginHeader)
