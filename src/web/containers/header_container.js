@@ -11,6 +11,12 @@ const styles = {
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'center',
+    backgroundColor: '#fff',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 10,
   },
   logo: {
     margin: 0,
