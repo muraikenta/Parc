@@ -1,6 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
+<<<<<<< HEAD
 import {Link} from 'react-router-dom'
+=======
+import PostFormModal from '../components/post_form_modal'
+>>>>>>> master
 
 const styles = {
   nav: {
@@ -23,18 +27,47 @@ const styles = {
   },
   postIcon: {
     height: '80%',
-    marginLeft: '15'
+    cursor: 'pointer',
+    marginLeft: 15,
   },
 }
 
 class Header extends React.PureComponent {
+  constructor() {
+    super()
+    this.state = {
+      isPostFormModalOpen: false,
+    }
+  }
+
+  openPostFormModal() {
+    if (this.state.isPostFormModalOpen) return
+    this.setState({isPostFormModalOpen: true})
+  }
+
+  closePostFormModal() {
+    if (!this.state.isPostFormModalOpen) return
+    this.setState({isPostFormModalOpen: false})
+  }
+
+
   render() {
     return (
-      <nav style={styles.nav}>
-        <h1 style={styles.logo}><Link to='timeline' style={{textDecoration: 'none'}}>Parc</Link></h1>
-        <img src="/images/mypage_icon.png" style={styles.postIcon} />
-        <img src="/images/post_icon.png" style={styles.postIcon} />
-      </nav>
+      <div>
+        <nav style={styles.nav}>
+          <h1 style={styles.logo}>Parc</h1>
+          <img src="/images/mypage_icon.png" style={styles.postIcon} />
+          <img
+            src="/images/post_icon.png"
+            style={styles.postIcon}
+            onClick={this.openPostFormModal.bind(this)}
+          />
+        </nav>
+        <PostFormModal
+          isOpen={this.state.isPostFormModalOpen}
+          onRequestClose={this.closePostFormModal.bind(this)}
+        />
+      </div>
     )
   }
 
