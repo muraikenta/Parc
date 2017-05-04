@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import PostFormModal from '../components/post_form_modal'
+import {createPost} from '../../actions/post'
 
 const styles = {
   nav: {
@@ -10,6 +11,12 @@ const styles = {
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'center',
+    backgroundColor: '#fff',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 10,
   },
   logo: {
     margin: 0,
@@ -40,6 +47,12 @@ class Header extends React.PureComponent {
     this.setState({isPostFormModalOpen: false})
   }
 
+  submitPost(content) {
+    const {dispatch} = this.props
+    dispatch(createPost({content}))
+    this.setState({isPostFormModalOpen: false})
+  }
+
 
   render() {
     return (
@@ -56,6 +69,7 @@ class Header extends React.PureComponent {
         <PostFormModal
           isOpen={this.state.isPostFormModalOpen}
           onRequestClose={this.closePostFormModal.bind(this)}
+          submitPost={this.submitPost.bind(this)}
         />
       </div>
     )

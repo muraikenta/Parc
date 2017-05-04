@@ -1,12 +1,49 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Modal from 'react-modal'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import MaterialBaseTheme from '../../lib/styles/material-base-theme'
+import TextField from 'material-ui/TextField'
+import RaisedButton from 'material-ui/RaisedButton'
+import {signup} from '../../actions/session'
+
+const styles = {
+  modal: {
+    content : {
+      position: 'absolute',
+      top: '20%',
+      left: '35%',
+      right: '35%',
+      bottom: '40%',
+      border: '1px solid #ccc',
+      background: '#fff',
+      overflow: 'auto',
+      WebkitOverflowScrolling: 'touch',
+      borderRadius: '4px',
+      outline: 'none',
+      padding: '20px'
+    }
+  },
+}
 
 class Landing extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
       isModalOpen: false,
+      name: '',
+      email: '',
+      password: '',
+    }
+  }
+
+  static childContextTypes = {
+    muiTheme: React.PropTypes.object,
+  }
+
+  getChildContext() {
+    return {
+      muiTheme: getMuiTheme(MaterialBaseTheme),
     }
   }
 
@@ -16,6 +53,21 @@ class Landing extends React.PureComponent {
 
   closeModal() {
     this.setState({isModalOpen: false})
+  }
+
+  handleChangeName() {
+    const name = this.refs.name.getValue()
+    this.setState({name})
+  }
+
+  handleChangeEmail() {
+    const email = this.refs.email.getValue()
+    this.setState({email})
+  }
+
+  handleChangePassword() {
+    const password = this.refs.password.getValue()
+    this.setState({password})
   }
 
   render() {
@@ -32,8 +84,31 @@ class Landing extends React.PureComponent {
           isOpen={this.state.isModalOpen}
           onRequestClose={this.closeModal.bind(this)}
           contentLabel='modal'
+          style={styles.modal}
         >
-          <div>hoge</div>
+          <TextField
+            hintText='ユーザー名'
+            ref='name'
+            onChange={this.handleChangeName.bind(this)}
+          />
+          <br />
+          <TextField
+            hintText='メールアドレス'
+            ref='email'
+            onChange={this.handleChangeEmail.bind(this)}
+          />
+          <br />
+          <TextField
+            hintText='パスワード'
+            type="password"
+            ref='password'
+            onChange={this.handleChangePassword.bind(this)}
+          />
+          <br />
+          <RaisedButton
+            label="新規登録"
+            onClick={() => this.props.dispatch(signup({name: this.state.name, email: this.state.email, password: this.state.password}))}
+          />
         </Modal>
       </div>
     )

@@ -10,6 +10,17 @@ const styles = {
 }
 
 class PostFormModal extends React.PureComponent {
+  constructor() {
+    super()
+    this.state = {
+      value: '',
+    }
+  }
+
+  onChange(e) {
+    this.setState({value: e.target.value})
+  }
+
   render() {
     return (
       <Modal
@@ -18,8 +29,15 @@ class PostFormModal extends React.PureComponent {
         contentLabel='PostFormModal'
       >
         <textarea
+          value={this.state.value}
           style={styles.textarea}
+          onChange={(e) => {this.onChange(e)}}
         />
+        <button
+          onClick={() => {this.props.submitPost(this.state.value)}}
+        >
+          投稿
+        </button>
       </Modal>
     )
   }
