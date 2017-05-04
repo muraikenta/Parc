@@ -4,7 +4,7 @@ import Post from '../components/post'
 const style = {
   display: 'flex',
   flexDirection: 'column',
-  margin: '20px 100px',
+  margin: '20px 300px',
   borderTop: '1px solid #e6ecf0',
 }
 
