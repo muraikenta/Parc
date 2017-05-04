@@ -20,9 +20,9 @@ if (rootElement) {
     applyMiddleware(thunk, logger),
   )
 
-  const authData = Cookies.get('authData')
+  const authData = Cookies.getJSON('authData')
   if (authData) {
-    store.dispatch(setIsSignedIn(true))
+    store.dispatch(setIsSignedIn(authData))
     store.dispatch(fetchMe(authData))
   }
 
