@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 import PostFormModal from '../../components/post_form_modal'
 import {createPost} from '../../../actions/post'
 import {
@@ -7,6 +8,7 @@ import {
   openPostFormModal,
   updatePostFormValue,
 } from '../../../actions/post_form_modal'
+import {signOut} from '../../../actions/session'
 
 const styles = {
   nav: {
@@ -34,12 +36,24 @@ const styles = {
   },
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  ...ownProps,
+const mapStateToProps = (state) => ({
+  me: state.session.me,
+  authData: state.session.authData,
   isPostFormModalOpen: state.postForm.isModalOpen,
   postFormValue: state.postForm.value,
   error: state.postForm.error,
 })
+
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
+  const { dispatch } = dispatchProps
+  return {
+    ...stateProps,
+    ...dispatchProps,
+    signOut: () => {
+      dispatch(signOut(stateProps.authData, () => {ownProps.history.push('/') }))
+    },
+  }
+}
 
 class AfterLoginHeader extends React.PureComponent {
   submitPost() {
@@ -60,6 +74,7 @@ class AfterLoginHeader extends React.PureComponent {
             style={styles.postIcon}
             onClick={() => {this.props.dispatch(openPostFormModal())}}
           />
+          <div onClick={() => {this.props.signOut() }}>ログアウト</div>
         </nav>
         <PostFormModal
           postFormValue={this.props.postFormValue}
@@ -73,4 +88,4 @@ class AfterLoginHeader extends React.PureComponent {
   }
 }
 
-export default connect(mapStateToProps)(AfterLoginHeader)
+export default withRouter(connect(mapStateToProps, null, mergeProps)(AfterLoginHeader))
