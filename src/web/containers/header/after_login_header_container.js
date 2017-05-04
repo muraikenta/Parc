@@ -1,12 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import PostFormModal from '../components/post_form_modal'
-import {createPost} from '../../actions/post'
+import PostFormModal from '../../components/post_form_modal'
+import {createPost} from '../../../actions/post'
 import {
   closePostFormModal,
   openPostFormModal,
   updatePostFormValue,
-} from '../../actions/post_form_modal'
+} from '../../../actions/post_form_modal'
 
 const styles = {
   nav: {
@@ -40,7 +40,7 @@ const mapStateToProps = (state) => ({
   error: state.postForm.error,
 })
 
-class Header extends React.PureComponent {
+class AfterLoginHeader extends React.PureComponent {
   submitPost() {
     const {dispatch, postFormValue} = this.props
     dispatch(createPost({content: postFormValue}))
@@ -68,7 +68,6 @@ class Header extends React.PureComponent {
       </div>
     )
   }
-
 }
 
-export default connect(mapStateToProps)(Header)
+export default connect(mapStateToProps)(AfterLoginHeader)
