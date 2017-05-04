@@ -1,4 +1,5 @@
 import React from 'react'
+import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import Timeline from '../components/timeline'
 import {fetchPosts} from '../../actions/post'
@@ -9,10 +10,13 @@ const mapStateToProps = (state) => ({
   error: state.posts.error,
 })
 
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators({fetchPosts}, dispatch)
+)
+
 class TimelineContainer extends React.PureComponent {
   componentWillMount() {
-    const dispatch = this.props.dispatch
-    dispatch(fetchPosts())
+    this.props.fetchPosts()
   }
 
   render() {
@@ -20,16 +24,28 @@ class TimelineContainer extends React.PureComponent {
       posts,
       isFetching,
       error,
+      fetchPosts,
     } = this.props
 
+    const onTryAgainClick = (e) => {
+      e.preventDefault()
+      fetchPosts()
+    }
+
     return (
-      <div>
-        {isFetching && <h1>Fetching!!</h1>}
-        {error && <h1>{error}</h1>}
+      <div style={{textAlign: 'center', marginTop: 50}}>
+        <h2>Timeline</h2>
+        {isFetching && <p>Now Loading...</p>}
+        {error && (
+          <div>
+            <span>Failed to access server. </span>
+            <a href='#' onClick={onTryAgainClick}>Try again</a>
+          </div>
+        )}
         <Timeline posts={posts} />
       </div>
     )
   }
 }
 
-export default connect(mapStateToProps)(TimelineContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(TimelineContainer)

@@ -1,17 +1,24 @@
 import React from 'react'
 import Post from '../components/post'
 
+const style = {
+  display: 'flex',
+  flexDirection: 'column',
+  margin: '20px 100px',
+  borderTop: '1px solid #e6ecf0',
+}
+
 class Timeline extends React.PureComponent {
   render() {
     return (
-      <ul>
+      <div style={style}>
         {this.props.posts.map((post) => (
           <Post
             key={post.id}
             {...post}
           />
         ))}
-      </ul>
+      </div>
     )
   }
 }
