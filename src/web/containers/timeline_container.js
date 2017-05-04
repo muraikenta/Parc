@@ -33,7 +33,7 @@ class TimelineContainer extends React.PureComponent {
     }
 
     return (
-      <div style={{textAlign: 'center', marginTop: 50}}>
+      <div style={{textAlign: 'center'}}>
         <h2>Timeline</h2>
         {isFetching && <p>Now Loading...</p>}
         {error && (
