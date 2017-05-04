@@ -28,6 +28,7 @@ class Header extends React.PureComponent {
     super()
     this.state = {
       isPostFormModalOpen: false,
+      postFormBody: '',
     }
   }
 
@@ -41,10 +42,17 @@ class Header extends React.PureComponent {
     this.setState({isPostFormModalOpen: false})
   }
 
-  submitPost(content) {
+  onPostFormChange(value) {
+    this.setState({postFormBody: value})
+  }
+
+  submitPost() {
     const {dispatch} = this.props
-    dispatch(createPost({content}))
-    this.setState({isPostFormModalOpen: false})
+    dispatch(createPost({content: this.state.postFormBody}))
+    this.setState({
+      isPostFormModalOpen: false,
+      postFormBody: '',
+    })
   }
 
 
@@ -61,6 +69,8 @@ class Header extends React.PureComponent {
           />
         </nav>
         <PostFormModal
+          postFormBody={this.state.postFormBody}
+          onPostFormChange={this.onPostFormChange.bind(this)}
           isOpen={this.state.isPostFormModalOpen}
           onRequestClose={this.closePostFormModal.bind(this)}
           submitPost={this.submitPost.bind(this)}

@@ -12,13 +12,6 @@ const styles = {
 class PostFormModal extends React.PureComponent {
   constructor() {
     super()
-    this.state = {
-      value: '',
-    }
-  }
-
-  onChange(e) {
-    this.setState({value: e.target.value})
   }
 
   render() {
@@ -29,12 +22,12 @@ class PostFormModal extends React.PureComponent {
         contentLabel='PostFormModal'
       >
         <textarea
-          value={this.state.value}
+          value={this.props.postFormBody}
           style={styles.textarea}
-          onChange={(e) => {this.onChange(e)}}
+          onChange={(e) => {this.props.onPostFormChange(e.target.value)}}
         />
         <button
-          onClick={() => {this.props.submitPost(this.state.value)}}
+          onClick={this.props.submitPost}
         >
           投稿
         </button>
