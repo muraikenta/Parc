@@ -34,7 +34,8 @@ const styles = {
   },
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
+  ...ownProps,
   isPostFormModalOpen: state.postForm.isModalOpen,
   postFormValue: state.postForm.value,
   error: state.postForm.error,
@@ -47,11 +48,13 @@ class AfterLoginHeader extends React.PureComponent {
   }
 
   render() {
+    const {me} = this.props
     return (
       <div>
         <nav style={styles.nav}>
           <h1 style={styles.logo}>Parc</h1>
           <img src="/images/mypage_icon.png" style={styles.postIcon} />
+          <div>{me.name}</div>
           <img
             src="/images/post_icon.png"
             style={styles.postIcon}
