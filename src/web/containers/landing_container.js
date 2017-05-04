@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 import Modal from 'react-modal'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MaterialBaseTheme from '../../lib/styles/material-base-theme'
@@ -70,6 +71,12 @@ class Landing extends React.PureComponent {
     this.setState({password})
   }
 
+  handleSubmit() {
+    const {dispatch, history} = this.props
+    const {name, email, password} = this.state
+    dispatch(signup({name, email, password}, () => { history.push('/timeline') }))
+  }
+
   render() {
     return (
       <div>
@@ -107,7 +114,7 @@ class Landing extends React.PureComponent {
           <br />
           <RaisedButton
             label="新規登録"
-            onClick={() => this.props.dispatch(signup({name: this.state.name, email: this.state.email, password: this.state.password}))}
+            onClick={this.handleSubmit.bind(this)}
           />
         </Modal>
       </div>
@@ -115,4 +122,4 @@ class Landing extends React.PureComponent {
   }
 }
 
-export default connect()(Landing)
+export default withRouter(connect()(Landing))
