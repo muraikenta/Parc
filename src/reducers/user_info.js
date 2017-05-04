@@ -1,7 +1,7 @@
 import {ActionTypes} from '../constants/app'
 
 const initialState = {
-  item: {},
+  data: {},
   isFetching: false,
   error: null,
 }
@@ -17,7 +17,7 @@ const userInfo = (state = initialState, action) => {
     case ActionTypes.USER__FETCH_SUCCESS:
       return {
         ...state,
-        item: action.item,
+        data: action.data,
         isFetching: false,
       }
     case ActionTypes.USER__FETCH_FAIL:

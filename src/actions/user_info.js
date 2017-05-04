@@ -7,10 +7,10 @@ const fetchUserInfoRequest = () => {
   }
 }
 
-const fetchUserInfoSuccess = (item) => {
+const fetchUserInfoSuccess = (data) => {
   return {
     type: ActionTypes.USER__FETCH_SUCCESS,
-    item,
+    data,
   }
 }
 

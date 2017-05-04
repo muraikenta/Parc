@@ -4,7 +4,7 @@ import MyPage from '../components/mypage'
 import {fetchUserInfo} from '../../actions/user_info'
 
 const mapStateToProps = (state) => ({
-  userInfo: state.userInfo.item,
+  userInfo: state.userInfo.data,
   isFetching: state.userInfo.isFetching,
   error: state.userInfo.error,
 })
