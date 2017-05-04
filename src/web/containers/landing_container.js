@@ -1,118 +1,58 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import Modal from 'react-modal'
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import MaterialBaseTheme from '../../lib/styles/material-base-theme'
-import TextField from 'material-ui/TextField'
-import RaisedButton from 'material-ui/RaisedButton'
-import {signup} from '../../actions/session'
+import {UserModalTypes} from '../../constants/app'
+import {openSignupModal, openLoginModal, closeModal} from '../../actions/modal'
+import {signup, signin} from '../../actions/session'
+import UserModal from '../components/user_modal'
 
-const styles = {
-  modal: {
-    content : {
-      position: 'absolute',
-      top: '20%',
-      left: '35%',
-      right: '35%',
-      bottom: '40%',
-      border: '1px solid #ccc',
-      background: '#fff',
-      overflow: 'auto',
-      WebkitOverflowScrolling: 'touch',
-      borderRadius: '4px',
-      outline: 'none',
-      padding: '20px'
+const mapStateToProps = (state) => ({
+  isModalOpen: state.modal.isModalOpen,
+  displayModalType: state.modal.displayModalType,
+})
+
+const mapDispatchToProps = (dispatch, history) => {
+  return {
+    openSignupModal: (displayModalType) => {
+      dispatch(openSignupModal(displayModalType))
+    },
+    openLoginModal: (displayModalType) => {
+      dispatch(openLoginModal(displayModalType))
+    },
+    closeModal: () => {
+      dispatch(closeModal())
+    },
+    signup: (name, email, password) => {
+      dispatch(signup({name, email, password}, () => { history.push('/timeline') }))
+    },
+    signin: (email, password) => {
+      dispatch(signin({email, password}))
     }
-  },
+  }
 }
 
 class Landing extends React.PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isModalOpen: false,
-      name: '',
-      email: '',
-      password: '',
-    }
-  }
-
-  static childContextTypes = {
-    muiTheme: React.PropTypes.object,
-  }
-
-  getChildContext() {
-    return {
-      muiTheme: getMuiTheme(MaterialBaseTheme),
-    }
-  }
-
-  openModal() {
-    this.setState({isModalOpen: true})
-  }
-
-  closeModal() {
-    this.setState({isModalOpen: false})
-  }
-
-  handleChangeName() {
-    const name = this.refs.name.getValue()
-    this.setState({name})
-  }
-
-  handleChangeEmail() {
-    const email = this.refs.email.getValue()
-    this.setState({email})
-  }
-
-  handleChangePassword() {
-    const password = this.refs.password.getValue()
-    this.setState({password})
-  }
-
   render() {
     return (
       <div>
         <h2>エンジニアが集まる場所</h2>
         <button
           type='button'
-          onClick={this.openModal.bind(this)}
+          onClick={() => this.props.openSignupModal(UserModalTypes.SIGNUP)}
         >
           アカウント作成
         </button>
-        <Modal
-          isOpen={this.state.isModalOpen}
-          onRequestClose={this.closeModal.bind(this)}
-          contentLabel='modal'
-          style={styles.modal}
-        >
-          <TextField
-            hintText='ユーザー名'
-            ref='name'
-            onChange={this.handleChangeName.bind(this)}
-          />
-          <br />
-          <TextField
-            hintText='メールアドレス'
-            ref='email'
-            onChange={this.handleChangeEmail.bind(this)}
-          />
-          <br />
-          <TextField
-            hintText='パスワード'
-            type="password"
-            ref='password'
-            onChange={this.handleChangePassword.bind(this)}
-          />
-          <br />
-          <RaisedButton
-            label="新規登録"
-            onClick={() => this.props.dispatch(signup({name: this.state.name, email: this.state.email, password: this.state.password}))}
-          />
-        </Modal>
+        <UserModal
+          isModalOpen={this.props.isModalOpen}
+          displayModalType={this.props.displayModalType}
+          openSignupModal={this.props.openSignupModal}
+          openLoginModal={this.props.openLoginModal}
+          closeModal={this.props.closeModal}
+          signup={this.props.signup}
+          signin={this.props.signin}
+        />
       </div>
     )
   }
 }
 
-export default connect()(Landing)
+export default connect(mapStateToProps, mapDispatchToProps)(Landing)
