@@ -4,14 +4,14 @@ import {ActionTypes} from '../constants/app'
 
 export const setIsSignedIn = (authData) => {
   return {
-    type: ActionTypes.SESSION__SET_IS_SIGNED_IN,
+    type: ActionTypes.SESSION__SIGN_IN,
     authData,
   }
 }
 
-export const setIsSignedOut = () => {
+const deleteSession = () => {
   return {
-    type: ActionTypes.SESSION__SET_IS_SIGNED_OUT,
+    type: ActionTypes.SESSION__SIGN_OUT,
   }
 }
 
@@ -48,8 +48,7 @@ export const signOut = ({uid, accessToken, client}, callback) => (dispatch) => {
   api.delete('/auth/sign_out', {uid, accessToken, client})
      .then((res) => {
        Cookies.remove('authData')
-       dispatch(setIsSignedOut())
-       dispatch(setMe({}))
+       dispatch(deleteSession())
        callback()
      })
 }
