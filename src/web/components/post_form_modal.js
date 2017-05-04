@@ -57,7 +57,7 @@ class PostFormModal extends React.PureComponent {
             <textarea
               value={this.props.postFormValue}
               style={{...styles.content, ...styles.textarea}}
-              onChange={(e) => {this.props.onPostFormChange(e.target.value)}}
+              onChange={(e) => { this.props.onPostFormChange(e.target.value) }}
             />
             <div style={{...styles.content, ...styles.markdownPreview}}>
               <ReactMarkdown

@@ -4,7 +4,7 @@ const styles = {
   userIcon: {
     width: 200,
     height: 200,
-  }
+  },
 }
 
 class UserInfo extends React.PureComponent {

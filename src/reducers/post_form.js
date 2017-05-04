@@ -30,7 +30,7 @@ const postForm = (state = initialState, action) => {
     case ActionTypes.POST_FORM__UPDATE_VALUE:
       return {
         ...state,
-        value: action.value
+        value: action.value,
       }
     default:
       return state
