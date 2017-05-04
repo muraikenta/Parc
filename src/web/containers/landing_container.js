@@ -33,7 +33,6 @@ class Landing extends React.PureComponent {
           onRequestClose={this.closeModal.bind(this)}
           contentLabel='modal'
         >
-          <div>hoge</div>
         </Modal>
       </div>
     )
