@@ -19,6 +19,11 @@ class TimelineContainer extends React.PureComponent {
     this.props.fetchPosts()
   }
 
+  onTryAgainClick(e) {
+    e.preventDefault()
+    this.props.fetchPosts()
+  }
+
   render() {
     const {
       posts,
@@ -27,11 +32,6 @@ class TimelineContainer extends React.PureComponent {
       fetchPosts,
     } = this.props
 
-    const onTryAgainClick = (e) => {
-      e.preventDefault()
-      fetchPosts()
-    }
-
     return (
       <div style={{textAlign: 'center'}}>
         <h2>Timeline</h2>
@@ -39,7 +39,7 @@ class TimelineContainer extends React.PureComponent {
         {error && (
           <div>
             <span>Failed to access server. </span>
-            <a href='#' onClick={onTryAgainClick}>Try again</a>
+            <a href='#' onClick={this.onTryAgainClick.bind(this)}>Try again</a>
           </div>
         )}
         <Timeline posts={posts} />

@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 const styles = {
   nav: {
@@ -30,7 +31,7 @@ class Header extends React.PureComponent {
   render() {
     return (
       <nav style={styles.nav}>
-        <h1 style={styles.logo}>Parc</h1>
+        <h1 style={styles.logo}><Link to='timeline' style={{textDecoration: 'none'}}>Parc</Link></h1>
         <img src="/images/mypage_icon.png" style={styles.postIcon} />
         <img src="/images/post_icon.png" style={styles.postIcon} />
       </nav>
