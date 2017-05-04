@@ -30,11 +30,11 @@ class Post extends React.PureComponent {
         {this.props.content}
         <div style={styles.iconWrapper}>
           <div style={{cursor: 'pointer'}}>
-            <img src='/images/retweet_icon.png' style={styles.icon}/>
+            <img src='/images/retweet_icon.png' style={styles.icon} />
             <span style={styles.iconStatus}>1</span>
           </div>
           <div style={{cursor: 'pointer'}}>
-            <img src='/images/fav_icon.png' style={styles.icon}/>
+            <img src='/images/fav_icon.png' style={styles.icon} />
             <span style={styles.iconStatus}>2</span>
           </div>
         </div>

@@ -10,7 +10,7 @@ import {signup} from '../../actions/session'
 
 const styles = {
   modal: {
-    content : {
+    content: {
       position: 'absolute',
       top: '20%',
       left: '35%',
@@ -22,8 +22,8 @@ const styles = {
       WebkitOverflowScrolling: 'touch',
       borderRadius: '4px',
       outline: 'none',
-      padding: '20px'
-    }
+      padding: '20px',
+    },
   },
 }
 
@@ -107,13 +107,13 @@ class Landing extends React.PureComponent {
           <br />
           <TextField
             hintText='パスワード'
-            type="password"
+            type='password'
             ref='password'
             onChange={this.handleChangePassword.bind(this)}
           />
           <br />
           <RaisedButton
-            label="新規登録"
+            label='新規登録'
             onClick={this.handleSubmit.bind(this)}
           />
         </Modal>

@@ -14,7 +14,7 @@ const OnlyBeforeSignedInRoute = ({component: Component, isSignedIn, ...rest}) =>
     ) : (
       <Component {...props} />
     )
-  )}/>
+  )} />
 )
 
 export default connect(mapStateToProps, null, null, {pure: false})(OnlyBeforeSignedInRoute)

@@ -29,7 +29,6 @@ class TimelineContainer extends React.PureComponent {
       posts,
       isFetching,
       error,
-      fetchPosts,
     } = this.props
 
     return (
