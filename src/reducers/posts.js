@@ -26,6 +26,15 @@ const posts = (state = initialState, action) => {
         isFetching: false,
         error: action.error,
       }
+    case ActionTypes.POST__CREATE_SUCCESS:
+      return {
+        ...state,
+        items: [action.item, ...state.items],
+      }
+    case ActionTypes.POST__CREATE_FAIL:
+      return {
+        ...state,
+      }
     default:
       return state
   }

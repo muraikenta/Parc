@@ -2,6 +2,12 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {openLoginModal} from '../../actions/modal'
 import PostFormModal from '../components/post_form_modal'
+import {createPost} from '../../actions/post'
+import {
+  closePostFormModal,
+  openPostFormModal,
+  updatePostFormValue,
+} from '../../actions/post_form_modal'
 
 const styles = {
   nav: {
@@ -11,6 +17,12 @@ const styles = {
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'center',
+    backgroundColor: '#fff',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 10,
   },
   logo: {
     margin: 0,
@@ -26,24 +38,17 @@ const styles = {
   }
 }
 
+const mapStateToProps = (state) => ({
+  isPostFormModalOpen: state.postForm.isModalOpen,
+  postFormValue: state.postForm.value,
+  error: state.postForm.error,
+})
+
 class Header extends React.PureComponent {
-  constructor() {
-    super()
-    this.state = {
-      isPostFormModalOpen: false,
-    }
+  submitPost() {
+    const {dispatch, postFormValue} = this.props
+    dispatch(createPost({content: postFormValue}))
   }
-
-  openPostFormModal() {
-    if (this.state.isPostFormModalOpen) return
-    this.setState({isPostFormModalOpen: true})
-  }
-
-  closePostFormModal() {
-    if (!this.state.isPostFormModalOpen) return
-    this.setState({isPostFormModalOpen: false})
-  }
-
 
   render() {
     return (
@@ -60,12 +65,15 @@ class Header extends React.PureComponent {
           <img
             src="/images/post_icon.png"
             style={styles.postIcon}
-            onClick={this.openPostFormModal.bind(this)}
+            onClick={() => {this.props.dispatch(openPostFormModal())}}
           />
         </nav>
         <PostFormModal
-          isOpen={this.state.isPostFormModalOpen}
-          onRequestClose={this.closePostFormModal.bind(this)}
+          postFormValue={this.props.postFormValue}
+          onPostFormChange={(value) => {this.props.dispatch(updatePostFormValue(value))}}
+          isOpen={this.props.isPostFormModalOpen}
+          onRequestClose={() => {this.props.dispatch(closePostFormModal())}}
+          submitPost={this.submitPost.bind(this)}
         />
       </div>
     )
@@ -73,4 +81,4 @@ class Header extends React.PureComponent {
 
 }
 
-export default connect()(Header)
+export default connect(mapStateToProps)(Header)

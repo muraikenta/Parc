@@ -10,6 +10,10 @@ const styles = {
 }
 
 class PostFormModal extends React.PureComponent {
+  constructor() {
+    super()
+  }
+
   render() {
     return (
       <Modal
@@ -18,8 +22,15 @@ class PostFormModal extends React.PureComponent {
         contentLabel='PostFormModal'
       >
         <textarea
+          value={this.props.postFormValue}
           style={styles.textarea}
+          onChange={(e) => {this.props.onPostFormChange(e.target.value)}}
         />
+        <button
+          onClick={this.props.submitPost}
+        >
+          投稿
+        </button>
       </Modal>
     )
   }

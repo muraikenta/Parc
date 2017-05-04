@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 import {openSignupModal, openLoginModal, closeModal} from '../../actions/modal'
 import {signup, signin} from '../../actions/session'
 import UserModal from '../components/user_modal'
@@ -54,4 +55,4 @@ class Landing extends React.PureComponent {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Landing)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Landing))

@@ -14,9 +14,11 @@ const Root = ({store}) => (
     <Router>
       <div>
         <Header />
-        <Route path='/' exact={true} component={Landing} />
-        <Route path='/timeline' component={Timeline} />
-        <Route path='/user/:id' component={MyPage} />
+        <div style={{paddingTop: 50}}>
+          <Route path='/' exact={true} component={Landing} />
+          <Route path='/timeline' component={Timeline} />
+          <Route path='/user/:id' component={MyPage} />
+        </div>
       </div>
     </Router>
   </Provider>
