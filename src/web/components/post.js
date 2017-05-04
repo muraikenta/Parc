@@ -1,9 +1,9 @@
 import React from 'react'
+import ReactMarkdown from 'react-markdown'
 
 const styles = {
   wrapper: {
-    padding: '30px 0 10px',
-    textAlign: 'center',
+    padding: '9px 12px',
     borderLeft: '1px solid #e6ecf0',
     borderRight: '1px solid #e6ecf0',
     borderBottom: '1px solid #e6ecf0',
@@ -27,7 +27,9 @@ class Post extends React.PureComponent {
   render() {
     return (
       <div style={styles.wrapper}>
-        {this.props.content}
+        <ReactMarkdown
+          source={this.props.content}
+        />
         <div style={styles.iconWrapper}>
           <div style={{cursor: 'pointer'}}>
             <img src='/images/retweet_icon.png' style={styles.icon}/>
