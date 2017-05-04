@@ -21,7 +21,7 @@ const Root = ({store}) => (
         <div style={{paddingTop: 50}}>
           <OnlyBeforeSignedInRoute path='/' exact={true} component={Landing} />
           <PrivateRoute path='/timeline' component={Timeline} />
-          <PrivateRoute path='/user/:id' component={MyPage} />
+          <PrivateRoute path='/mypage' component={MyPage} />
         </div>
       </div>
     </Router>
