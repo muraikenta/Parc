@@ -23,8 +23,8 @@ const Root = ({store}) => (
         <Header />
         <div style={{paddingTop: 50}}>
           <OnlyBeforeSignedInRoute path='/' exact={true} component={Landing} />
-          <Route path='/timeline' component={Timeline} />
-          <Route path='/mypage' component={MyPage} />
+          <PrivateRoute path='/timeline' component={Timeline} />
+          <PrivateRoute path='/mypage' component={MyPage} />
         </div>
       </div>
     </Router>
