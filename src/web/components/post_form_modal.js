@@ -36,10 +36,6 @@ const styles = {
 }
 
 class PostFormModal extends React.PureComponent {
-  constructor() {
-    super()
-  }
-
   render() {
     return (
       <Modal
