@@ -2,6 +2,7 @@ import {ActionTypes} from '../constants/app'
 
 const initialState = {
   me: {},
+  authData: null,
   isSignedIn: false,
 }
 
@@ -10,7 +11,15 @@ const session = (state = initialState, action) => {
     case ActionTypes.SESSION__SET_IS_SIGNED_IN:
       return {
         ...state,
-        isSignedIn: action.isSignedIn,
+        isSignedIn: true,
+        authData: action.authData,
+      }
+
+    case ActionTypes.SESSION__SET_IS_SIGNED_OUT:
+      return {
+        ...state,
+        isSignedIn: false,
+        authData: null,
       }
 
     case ActionTypes.SESSION__SET_ME:

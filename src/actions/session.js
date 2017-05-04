@@ -2,10 +2,16 @@ import Cookies from 'js-cookie'
 import api from '../lib/api'
 import {ActionTypes} from '../constants/app'
 
-export const setIsSignedIn = (isSignedIn) => {
+export const setIsSignedIn = (authData) => {
   return {
     type: ActionTypes.SESSION__SET_IS_SIGNED_IN,
-    isSignedIn,
+    authData,
+  }
+}
+
+export const setIsSignedOut = () => {
+  return {
+    type: ActionTypes.SESSION__SET_IS_SIGNED_OUT,
   }
 }
 
@@ -21,7 +27,7 @@ export const fetchMe = ({uid, accessToken, client}) => (dispatch) => {
      .then((res) => { dispatch(setMe(res.data.data)) })
      .catch((_e) => {
        Cookies.remove('authData')
-       dispatch(setIsSignedIn(false))
+       dispatch(setIsSignedOut())
      })
 }
 
@@ -29,10 +35,21 @@ export const signup = ({name, email, password}, callback) => (dispatch) => {
   api.post('/auth', {name, email, password})
      .then((res) => {
        const {accessToken, client, uid} = res.headers
-       Cookies.set('authData', {accessToken, client, uid})
-       dispatch(setIsSignedIn(true))
+       const authData = {accessToken, client, uid}
+       Cookies.set('authData', authData)
+       dispatch(setIsSignedIn(authData))
        dispatch(setMe(res.data.data))
        callback()
      })
      .catch(() => { })
+}
+
+export const signOut = ({uid, accessToken, client}, callback) => (dispatch) => {
+  api.delete('/auth/sign_out', {uid, accessToken, client})
+     .then((res) => {
+       Cookies.remove('authData')
+       dispatch(setIsSignedOut())
+       dispatch(setMe({}))
+       callback()
+     })
 }
