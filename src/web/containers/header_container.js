@@ -1,10 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-<<<<<<< HEAD
-import {Link} from 'react-router-dom'
-=======
 import PostFormModal from '../components/post_form_modal'
->>>>>>> master
 
 const styles = {
   nav: {
