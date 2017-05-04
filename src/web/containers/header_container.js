@@ -1,6 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {UserModalTypes} from '../../constants/app'
 import {openLoginModal} from '../../actions/modal'
 import PostFormModal from '../components/post_form_modal'
 
@@ -52,7 +51,7 @@ class Header extends React.PureComponent {
         <nav style={styles.nav}>
           <h1 style={styles.logo}>Parc</h1>
           <span
-            onClick={() => this.props.dispatch(openLoginModal(UserModalTypes.LOGIN))}
+            onClick={() => this.props.dispatch(openLoginModal())}
             style={styles.loginBtn}
           >
             ログイン

@@ -11,13 +11,13 @@ const modal = (state = initialState, action) => {
       return {
         ...state,
         isModalOpen: true,
-        displayModalType: action.displayModalType,
+        displayModalType: UserModalTypes.SIGNUP,
       }
     case ActionTypes.MODAL__OPEN_LOGIN:
       return {
         ...state,
         isModalOpen: true,
-        displayModalType: action.displayModalType,
+        displayModalType: UserModalTypes.LOGIN,
       }
     case ActionTypes.MODAL__CLOSE:
       return {

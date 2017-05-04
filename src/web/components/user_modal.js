@@ -101,7 +101,7 @@ class UserModal extends React.PureComponent {
               />
               <br />
               <span
-                onClick={() => openLoginModal(UserModalTypes.LOGIN)}
+                onClick={() => openLoginModal()}
               >
                 <span style={{color: 'blue', cursor: 'pointer'}}>ログイン</span>はこちら
               </span>
@@ -129,7 +129,7 @@ class UserModal extends React.PureComponent {
               />
               <br />
               <span
-                onClick={() => openSignupModal(UserModalTypes.SIGNUP)}
+                onClick={() => openSignupModal()}
               >
                 <span style={{color: 'blue', cursor: 'pointer'}}>新規登録</span>はこちら
               </span>

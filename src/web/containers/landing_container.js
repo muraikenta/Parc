@@ -1,6 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {UserModalTypes} from '../../constants/app'
 import {openSignupModal, openLoginModal, closeModal} from '../../actions/modal'
 import {signup, signin} from '../../actions/session'
 import UserModal from '../components/user_modal'
@@ -12,11 +11,11 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch, history) => {
   return {
-    openSignupModal: (displayModalType) => {
-      dispatch(openSignupModal(displayModalType))
+    openSignupModal: () => {
+      dispatch(openSignupModal())
     },
-    openLoginModal: (displayModalType) => {
-      dispatch(openLoginModal(displayModalType))
+    openLoginModal: () => {
+      dispatch(openLoginModal())
     },
     closeModal: () => {
       dispatch(closeModal())
@@ -37,7 +36,7 @@ class Landing extends React.PureComponent {
         <h2>エンジニアが集まる場所</h2>
         <button
           type='button'
-          onClick={() => this.props.openSignupModal(UserModalTypes.SIGNUP)}
+          onClick={() => this.props.openSignupModal()}
         >
           アカウント作成
         </button>
