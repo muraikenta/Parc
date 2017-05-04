@@ -5,6 +5,8 @@ import {render} from 'react-dom'
 import {createStore, applyMiddleware} from 'redux'
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
+import Cookies from 'js-cookie'
+import {fetchMe, setIsSignedIn} from '../actions/session'
 import reducer from '../reducers'
 import Root from './components/root'
 
@@ -17,6 +19,12 @@ if (rootElement) {
     reducer,
     applyMiddleware(thunk, logger),
   )
+
+  const authData = Cookies.get('authData')
+  if (authData) {
+    store.dispatch(setIsSignedIn(true))
+    store.dispatch(fetchMe(authData))
+  }
 
   render(
     <Root store={store} />,
