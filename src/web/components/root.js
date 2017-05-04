@@ -11,7 +11,7 @@ import {
   PrivateRoute,
 } from '../containers/router'
 
-import Header from '../containers/header_container'
+import Header from '../containers/header'
 import Landing from '../containers/landing_container'
 import Timeline from '../containers/timeline_container'
 import MyPage from '../containers/mypage_container'

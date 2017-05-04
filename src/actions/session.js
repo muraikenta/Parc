@@ -30,6 +30,7 @@ export const signup = ({name, email, password}, callback) => (dispatch) => {
      .then((res) => {
        const {accessToken, client, uid} = res.headers
        Cookies.set('authData', {accessToken, client, uid})
+       dispatch(setIsSignedIn(true))
        dispatch(setMe(res.data.data))
        callback()
      })
