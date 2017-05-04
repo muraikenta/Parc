@@ -1,0 +1,62 @@
+parser: "babel-eslint"
+
+extends:
+  - "standard"
+  - "standard-react"
+
+plugins:
+  - import
+  - flowtype
+
+env:
+  browser: true
+  mocha: true
+
+globals:
+  __DEV__: false
+  __PROD__: false
+  __DEBUG__: false
+  __DEBUG_NEW_WINDOW__: false
+  React: true
+  ReactDOM: true
+
+rules:
+  semi:
+    - 2
+    - "never"
+  comma-dangle:
+    - 2
+    - "always-multiline"
+  space-before-function-paren:
+    - 2
+    - "never"
+  prefer-const: 2
+  dot-notation: 2
+  no-var: 2
+  prefer-arrow-callback: 2
+  prefer-spread: 2
+  arrow-spacing: 2
+  eqeqeq: 2
+  no-fallthrough: 2
+  no-multi-spaces: 2
+  no-useless-escape: 0
+  object-curly-spacing:
+    - 2
+    - "never"
+  array-bracket-spacing:
+    - 2
+    - "never"
+  no-duplicate-imports: 0 # use `import/no-duplicates` instead for flow.
+  import/no-duplicates: 2
+  flowtype/define-flow-type: 2
+  flowtype/use-flow-type: 2
+  react/react-in-jsx-scope: 2
+  react/jsx-boolean-value:
+    - 2
+    - "always"
+  react/jsx-no-duplicate-props: 2
+  react/prop-types: 2
+  react/no-unused-prop-types: 2
+  react/jsx-no-bind: 0
+  react/jsx-indent-props: 0
+  react/jsx-indent: 0
