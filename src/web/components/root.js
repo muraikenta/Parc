@@ -16,7 +16,7 @@ const Root = ({store}) => (
         <Header />
         <Route path='/' exact={true} component={Landing} />
         <Route path='/timeline' component={Timeline} />
-        <Route path='/user/:id' component={MyPage} />
+        <Route path='/mypage' component={MyPage} />
       </div>
     </Router>
   </Provider>
