@@ -26,7 +26,7 @@ export const fetchPosts = () => (dispatch) => {
 
   api.get('/posts')
      .then((json) => { dispatch(fetchPostSuccess(json.data)) })
-     .catch((error) => { dispatch(fetchPostFail(error.message)) })
+     .catch((error) => { dispatch(fetchPostFail(error)) })
 }
 
 const createPostRequest = () => {
