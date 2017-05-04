@@ -29,11 +29,10 @@ class TimelineContainer extends React.PureComponent {
       posts,
       isFetching,
       error,
-      fetchPosts,
     } = this.props
 
     return (
-      <div style={{textAlign: 'center'}}>
+      <div style={{margin: '0 25%'}}>
         <h2>Timeline</h2>
         {isFetching && <p>Now Loading...</p>}
         {error && (

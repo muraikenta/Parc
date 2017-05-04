@@ -45,12 +45,12 @@ const mapStateToProps = (state) => ({
 })
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
-  const { dispatch } = dispatchProps
+  const {dispatch} = dispatchProps
   return {
     ...stateProps,
     ...dispatchProps,
     signOut: () => {
-      dispatch(signOut(stateProps.authData, () => {ownProps.history.push('/') }))
+      dispatch(signOut(stateProps.authData, () => { ownProps.history.push('/') }))
     },
   }
 }
@@ -67,20 +67,20 @@ class AfterLoginHeader extends React.PureComponent {
       <div>
         <nav style={styles.nav}>
           <h1 style={styles.logo}>Parc</h1>
-          <img src="/images/mypage_icon.png" style={styles.postIcon} />
+          <img src='/images/mypage_icon.png' style={styles.postIcon} />
           <div>{me.name}</div>
           <img
-            src="/images/post_icon.png"
+            src='/images/post_icon.png'
             style={styles.postIcon}
-            onClick={() => {this.props.dispatch(openPostFormModal())}}
+            onClick={() => { this.props.dispatch(openPostFormModal()) }}
           />
-          <div onClick={() => {this.props.signOut() }}>ログアウト</div>
+          <div onClick={() => { this.props.signOut() }}>ログアウト</div>
         </nav>
         <PostFormModal
           postFormValue={this.props.postFormValue}
-          onPostFormChange={(value) => {this.props.dispatch(updatePostFormValue(value))}}
+          onPostFormChange={(value) => { this.props.dispatch(updatePostFormValue(value)) }}
           isOpen={this.props.isPostFormModalOpen}
-          onRequestClose={() => {this.props.dispatch(closePostFormModal())}}
+          onRequestClose={() => { this.props.dispatch(closePostFormModal()) }}
           submitPost={this.submitPost.bind(this)}
         />
       </div>

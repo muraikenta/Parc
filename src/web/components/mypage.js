@@ -3,8 +3,7 @@ import UserInfo from '../components/user_info'
 
 class MyPage extends React.PureComponent {
   render() {
-
-    return(
+    return (
       <div>
         <UserInfo
           {...this.props.userInfo}
