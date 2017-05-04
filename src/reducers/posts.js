@@ -34,7 +34,6 @@ const posts = (state = initialState, action) => {
     case ActionTypes.POST__CREATE_FAIL:
       return {
         ...state,
-        error: action.error,
       }
     default:
       return state
