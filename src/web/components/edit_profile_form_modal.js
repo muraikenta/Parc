@@ -1,7 +1,12 @@
 import React from 'react'
 import Modal from 'react-modal'
 
-const styles = {}
+const styles = {
+  textarea: {
+    width: '100%',
+    height: '100%',
+  },
+}
 
 class EditProfileFormModal extends React.PureComponent {
   render() {
