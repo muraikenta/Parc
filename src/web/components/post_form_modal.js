@@ -22,7 +22,7 @@ class PostFormModal extends React.PureComponent {
         contentLabel='PostFormModal'
       >
         <textarea
-          value={this.props.postFormBody}
+          value={this.props.postFormValue}
           style={styles.textarea}
           onChange={(e) => {this.props.onPostFormChange(e.target.value)}}
         />
