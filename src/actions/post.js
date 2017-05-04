@@ -28,3 +28,31 @@ export const fetchPosts = () => (dispatch) => {
      .then((json) => { dispatch(fetchPostSuccess(json.data)) })
      .catch((error) => { dispatch(fetchPostFail(error.message)) })
 }
+
+const createPostRequest = () => {
+  return {
+    type: ActionTypes.POST__CREATE_REQUEST,
+  }
+}
+
+const createPostSuccess = (item) => {
+  return {
+    type: ActionTypes.POST__CREATE_SUCCESS,
+    item,
+  }
+}
+
+const createPostFail = (error) => {
+  return {
+    type: ActionTypes.POST__CREATE_FAIL,
+    error,
+  }
+}
+
+export const createPost = (post) => (dispatch) => {
+  dispatch(createPostRequest(post))
+
+  api.post('/posts', {post})
+     .then((json) => { dispatch(createPostSuccess(json.data)) })
+     .catch((error) => { dispatch(createPostFail(error.message)) })
+}
