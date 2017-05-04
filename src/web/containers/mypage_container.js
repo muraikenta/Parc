@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import MyPage from '../components/mypage'
+import EditProfileFormModal from '../components/edit_profile_form_modal'
 import {fetchUserInfo} from '../../actions/user_info'
 
 const mapStateToProps = (state) => ({
@@ -10,6 +11,23 @@ const mapStateToProps = (state) => ({
 })
 
 class MyPageContainer extends React.PureComponent {
+  constructor() {
+    super()
+    this.state = {
+      isEditProfileFormModalOpen: false,
+    }
+  }
+
+  openEditProfileFormModal() {
+    if (this.state.isEditProfileFormModalOpen) return
+    this.setState({isEditProfileFormModalOpen: true})
+  }
+
+  cloaseEditProfileFormModal() {
+    if (!this.state.isEditProfileFormModalOpen) return
+    this.setState({isEditProfileFormModalOpen: false})
+  }
+
   componentWillMount() {
     const {dispatch} = this.props
     dispatch(fetchUserInfo(1))
@@ -25,6 +43,11 @@ class MyPageContainer extends React.PureComponent {
     return (
       <div>
         <MyPage userInfo={userInfo} />
+        <span onClick={this.openEditProfileFormModal.bind(this)}>プロフィール編集</span>
+        <EditProfileFormModal
+          isOpen={this.state.isEditProfileFormModalOpen}
+          onRequestClose={this.cloaseEditProfileFormModal.bind(this)}
+        />
       </div>
     )
   }
