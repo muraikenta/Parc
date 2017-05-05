@@ -5,7 +5,6 @@ import SignUpForm from '../components/sign_up_form'
 
 const mapStateToProps = (state) => {
   const form = state.forms[FormTypes.SIGN_UP]
-  console.log(form)
   return {
     headErrorMessages: form ? form.apiErrorMessages : [],
   }
