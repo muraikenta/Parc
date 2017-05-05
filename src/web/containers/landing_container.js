@@ -1,6 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
 import {UserModalTypes} from '../../constants/app'
 import {openModal, closeModal} from '../../actions/modal'
 import {signup, signin} from '../../actions/session'
@@ -11,7 +10,7 @@ const mapStateToProps = (state) => ({
   identifier: state.modal.identifier,
 })
 
-const mapDispatchToProps = (dispatch, history) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     openModal: (identifier) => {
       dispatch(openModal(identifier))
@@ -20,7 +19,7 @@ const mapDispatchToProps = (dispatch, history) => {
       dispatch(closeModal(identifier))
     },
     signup: (name, email, password) => {
-      dispatch(signup({name, email, password}, () => { history.push('/timeline') }))
+      dispatch(signup({name, email, password}))
     },
     signin: (email, password) => {
       dispatch(signin({email, password}))
@@ -52,4 +51,4 @@ class Landing extends React.PureComponent {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Landing))
+export default connect(mapStateToProps, mapDispatchToProps)(Landing)
