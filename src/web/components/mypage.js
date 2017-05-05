@@ -24,7 +24,7 @@ class MyPage extends React.PureComponent {
   submitProfile(profile) {
     const {dispatch} = this.props
     dispatch(updateProfile({profile}))
-    this.setState({isPostFormModalOpen: false})
+    this.setState({isEditProfileFormModalOpen: false})
   }
 
   render() {
