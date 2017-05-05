@@ -1,19 +1,24 @@
 import React from 'react'
 import Radium from 'radium'
 
-const FormError = ({messages = []}) => (
-  <ul style={styles.root}>
-    {messages.map((message, i) => (
-      <li key={i} style={styles.item}>{message}</li>
-    ))}
-  </ul>
-)
+const FormError = ({messages = []}) => {
+  if (messages.length === 0) {
+    return <div />
+  }
+
+  return (
+    <ul style={styles.root}>
+      {messages.map((message, i) => (
+        <li key={i} style={styles.item}>{message}</li>
+      ))}
+    </ul>
+  )
+}
 
 const styles = {
   root: {
-    color: 'red',
-  },
-  item: {
+    marginTop: 10,
+    color: '#e40303',
   },
 }
 

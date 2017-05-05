@@ -3,19 +3,13 @@ import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import FormError from './form_error'
 
-class SignUpForm extends React.PureComponent {
+class SignInForm extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      name: '',
       email: '',
       password: '',
     }
-  }
-
-  handleChangeName() {
-    const name = this.refs.name.getValue()
-    this.setState({name})
   }
 
   handleChangeEmail() {
@@ -29,9 +23,9 @@ class SignUpForm extends React.PureComponent {
   }
 
   onSubmitHandler(e) {
-    const {name, email, password} = this.state
+    const {email, password} = this.state
     e.preventDefault()
-    this.props.onSubmit({name, email, password})
+    this.props.onSubmit({email, password})
   }
 
   render() {
@@ -42,26 +36,19 @@ class SignUpForm extends React.PureComponent {
         style={styles.form}
         onSubmit={this.onSubmitHandler.bind(this)}
       >
-        <h2>アカウントを作成</h2>
+        <h2>ログイン</h2>
         <FormError messages={headErrorMessages} />
         <TextField
-          floatingLabelText='ユーザー名'
-          ref='name'
-          style={styles.textField}
-          onChange={this.handleChangeName.bind(this)}
-        />
-        <br />
-        <TextField
           floatingLabelText='メールアドレス'
-          ref='email'
           style={styles.textField}
+          ref='email'
           onChange={this.handleChangeEmail.bind(this)}
         />
         <br />
         <TextField
           floatingLabelText='パスワード'
-          type="password"
           style={styles.textField}
+          type="password"
           ref='password'
           onChange={this.handleChangePassword.bind(this)}
         />
@@ -70,7 +57,7 @@ class SignUpForm extends React.PureComponent {
           type='submit'
           primary={true}
           style={styles.submitButton}
-          label="新規登録"
+          label="ログイン"
         />
       </form>
     )
@@ -90,4 +77,4 @@ const styles = {
   },
 }
 
-export default SignUpForm
+export default SignInForm

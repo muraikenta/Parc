@@ -1,52 +1,10 @@
 import React from 'react'
 import Modal from 'react-modal'
-import TextField from 'material-ui/TextField'
-import RaisedButton from 'material-ui/RaisedButton'
-import {UserModalTypes} from '../../constants/app'
+import {ModalTypes} from '../../constants/app'
 import SignUpForm from '../containers/sign_up_form_container'
-
-const styles = {
-  modal: {
-    content : {
-      position: 'absolute',
-      top: '20%',
-      padding: '20px',
-      margin: '0 auto',
-      width: 350,
-      border: '1px solid #ccc',
-      overflow: 'auto',
-      WebkitOverflowScrolling: 'touch',
-      borderRadius: '4px',
-      outline: 'none',
-    }
-  },
-}
+import SignInForm from '../containers/sign_in_form_container'
 
 class UserModal extends React.PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      name: '',
-      email: '',
-      password: '',
-    }
-  }
-
-  handleChangeName() {
-    const name = this.refs.name.getValue()
-    this.setState({name})
-  }
-
-  handleChangeEmail() {
-    const email = this.refs.email.getValue()
-    this.setState({email})
-  }
-
-  handleChangePassword() {
-    const password = this.refs.password.getValue()
-    this.setState({password})
-  }
-
   render() {
     const {
       isModalOpen,
@@ -58,34 +16,34 @@ class UserModal extends React.PureComponent {
 
     const displayModal = (() => {
       switch (identifier) {
-        case UserModalTypes.SIGNUP:
-          return <SignUpForm />
-        case UserModalTypes.LOGIN:
+        case ModalTypes.SIGN_UP:
           return (
             <div>
-              <TextField
-                hintText='メールアドレス'
-                ref='email'
-                onChange={this.handleChangeEmail.bind(this)}
-              />
-              <br />
-              <TextField
-                hintText='パスワード'
-                type='password'
-                ref='password'
-                onChange={this.handleChangePassword.bind(this)}
-              />
-              <br />
-              <RaisedButton
-                label='ログイン'
-                onClick={() => signin(this.state.email, this.state.password)}
-              />
-              <br />
-              <span
-                onClick={() => openModal(UserModalTypes.SIGNUP)}
-              >
-                <span style={{color: 'blue', cursor: 'pointer'}}>新規登録</span>はこちら
-              </span>
+              <SignUpForm />
+              <div style={styles.linkSection}>
+                <span
+                  onClick={() => openModal(ModalTypes.SIGN_IN)}
+                  style={styles.link}
+                >
+                  ログイン
+                </span>
+                はこちら
+              </div>
+            </div>
+          )
+        case ModalTypes.SIGN_IN:
+          return (
+            <div>
+              <SignInForm />
+              <div style={styles.linkSection}>
+                <span
+                  onClick={() => openModal(ModalTypes.SIGN_UP)}
+                  style={styles.link}
+                >
+                  新規登録
+                </span>
+                はこちら
+              </div>
             </div>
           )
       }
@@ -102,6 +60,37 @@ class UserModal extends React.PureComponent {
       </Modal>
     )
   }
+}
+
+const styles = {
+  modal: {
+    overlay: {
+      zIndex: 100,
+      backgroundColor : 'rgba(0, 0, 0, 0.75)',
+    },
+    content : {
+      position: 'absolute',
+      top: '15%',
+      padding: '40px 50px',
+      margin: '0 auto',
+      width: 300,
+      maxHeight: 370,
+      border: '1px solid #ccc',
+      overflow: 'auto',
+      WebkitOverflowScrolling: 'touch',
+      borderRadius: '4px',
+      outline: 'none',
+      textAlign: 'center',
+    }
+  },
+  linkSection: {
+    marginTop: 30,
+  },
+  link: {
+    fontSize: 14,
+    color: '#1178e8',
+    cursor: 'pointer',
+  },
 }
 
 export default UserModal
