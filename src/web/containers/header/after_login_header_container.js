@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
-import Dropdown, {DropdownTrigger, DropdownContent} from 'react-simple-dropdown'
+import {withRouter, Link} from 'react-router-dom'
 import Avatar from 'material-ui/Avatar'
+import Dropdown, {DropdownTrigger, DropdownContent} from '../../components/dropdown'
 import PostFormModal from '../../components/post_form_modal'
 import {createPost} from '../../../actions/post'
 import {
@@ -100,6 +100,7 @@ class AfterLoginHeader extends React.PureComponent {
                 <span style={styles.userName}>{me.name}</span>
               </DropdownTrigger>
               <DropdownContent style={styles.dropdownContent}>
+                <div><Link to='/mypage'>マイページ</Link></div>
                 <div onClick={() => { this.props.signOut() }}>ログアウト</div>
               </DropdownContent>
             </Dropdown>
