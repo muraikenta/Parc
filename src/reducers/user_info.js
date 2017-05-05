@@ -26,6 +26,15 @@ const userInfo = (state = initialState, action) => {
         isFetching: false,
         error: action.error,
       }
+    case ActionTypes.USER__FOLLOW_SUCCESS:
+    case ActionTypes.USER__UNFOLLOW_SUCCESS:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          following: action.data.following,
+        },
+      }
     default:
       return state
   }

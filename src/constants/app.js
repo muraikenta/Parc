@@ -14,7 +14,14 @@ export const ActionTypes = keyMirror({
   POST_FORM__CLOSE: null,
   POST_FORM__OPEN: null,
   POST_FORM__UPDATE_VALUE: null,
+
   USER__FETCH_REQUEST: null,
   USER__FETCH_SUCCESS: null,
   USER__FETCH_FAIL: null,
+  USER__FOLLOW_REQUEST: null,
+  USER__FOLLOW_SUCCESS: null,
+  USER__FOLLOW_FAIL: null,
+  USER__UNFOLLOW_REQUEST: null,
+  USER__UNFOLLOW_SUCCESS: null,
+  USER__UNFOLLOW_FAIL: null,
 })
