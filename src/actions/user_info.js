@@ -52,7 +52,7 @@ const updateProfileFail = (error) => {
 export const updateProfile = ({id, profile}) => (dispatch) => {
   dispatch(updateProfileRequest())
 
-  api.put(`/users/${id}`, {profile})
+  api.patch(`/users/${id}`, {profile})
     .then((json) => { dispatch(updateProfileSuccess(json.data)) })
     .catch((error) => { dispatch(updateProfileFail(error.message)) })
 }
