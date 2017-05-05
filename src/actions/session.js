@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie'
 import api from '../lib/api'
-import {ActionTypes} from '../constants/app'
+import {ActionTypes, FormTypes} from '../constants/app'
+import {setApiError} from './form'
 
 export const setIsSignedIn = (authData) => {
   return {
@@ -33,7 +34,11 @@ export const fetchMe = ({uid, accessToken, client}) => (dispatch) => {
 
 export const signup = ({name, email, password}) => (dispatch) => {
   api.post('/auth', {name, email, password})
-     .then((res) => { dispatch(signInSuccess(res)) })
+     .then((res) => { dispatch(signUpSuccess(res)) })
+     .catch((error) => {
+       // TODO: camelize full_messages
+       dispatch(setApiError(FormTypes.SIGN_UP, error.response.data.errors.full_messages))
+     })
 }
 
 export const signin = ({email, password}) => (dispatch) => {
@@ -48,6 +53,8 @@ const signInSuccess = (res) => (dispatch) => {
   dispatch(setIsSignedIn(authData))
   dispatch(setMe(res.data.data))
 }
+
+const signUpSuccess = signInSuccess
 
 export const signOut = ({uid, accessToken, client}) => (dispatch) => {
   api.delete('/auth/sign_out', {uid, accessToken, client})

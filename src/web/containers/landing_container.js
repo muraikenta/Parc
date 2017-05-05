@@ -18,9 +18,6 @@ const mapDispatchToProps = (dispatch) => {
     closeModal: (identifier) => {
       dispatch(closeModal(identifier))
     },
-    signup: (name, email, password) => {
-      dispatch(signup({name, email, password}))
-    },
     signin: (email, password) => {
       dispatch(signin({email, password}))
     }
