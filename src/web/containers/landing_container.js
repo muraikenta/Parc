@@ -2,8 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import Modal from 'react-modal'
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import MaterialBaseTheme from '../../lib/styles/material-base-theme'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import {signup} from '../../actions/session'
@@ -35,16 +33,6 @@ class Landing extends React.PureComponent {
       name: '',
       email: '',
       password: '',
-    }
-  }
-
-  static childContextTypes = {
-    muiTheme: React.PropTypes.object,
-  }
-
-  getChildContext() {
-    return {
-      muiTheme: getMuiTheme(MaterialBaseTheme),
     }
   }
 
