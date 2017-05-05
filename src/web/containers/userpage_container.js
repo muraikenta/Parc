@@ -1,7 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import UserPage from '../components/userpage'
-import {fetchUserInfo} from '../../actions/user_info'
+import {
+  fetchUserInfo,
+  follow,
+  unfollow,
+} from '../../actions/user_info'
 
 const mapStateToProps = (state) => ({
   userInfo: state.userInfo.data,
@@ -12,6 +16,12 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchUserInfo: () => {
     dispatch(fetchUserInfo(ownProps.match.params.id))
+  },
+  follow: () => {
+    dispatch(follow(ownProps.match.params.id))
+  },
+  unfollow: () => {
+    dispatch(unfollow(ownProps.match.params.id))
   },
 })
 
@@ -25,6 +35,8 @@ class UserPageContainer extends React.PureComponent {
       userInfo,
       isFetching,
       error,
+      follow,
+      unfollow,
     } = this.props
 
     const displayContent = (() => {
@@ -39,7 +51,11 @@ class UserPageContainer extends React.PureComponent {
         )
       }
       return (
-        <UserPage userInfo={userInfo} />
+        <UserPage
+          userInfo={userInfo}
+          follow={follow}
+          unfollow={unfollow}
+        />
       )
     })()
 
