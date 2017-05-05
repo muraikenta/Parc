@@ -32,6 +32,11 @@ const styles = {
     margin: 0,
     marginRight: 'auto',
   },
+  logoLink: {
+    display: 'block',
+    lineHeight: '50px',
+    padding: '0 14px',
+  },
   menus: {
     display: 'flex',
   },
@@ -88,7 +93,9 @@ class AfterLoginHeader extends React.PureComponent {
     return (
       <div>
         <nav style={styles.nav}>
-          <h1 style={styles.logo}>Parc</h1>
+          <h1 style={styles.logo}>
+            <Link to='/' style={styles.logoLink}>Parc</Link>
+          </h1>
           <div style={styles.menus}>
             <Dropdown style={styles.menu}>
               <DropdownTrigger>
