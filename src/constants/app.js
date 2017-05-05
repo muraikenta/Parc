@@ -11,7 +11,6 @@ export const ActionTypes = keyMirror({
   POST__CREATE_REQUEST: null,
   POST__CREATE_SUCCESS: null,
   POST__CREATE_FAIL: null,
-
   POST_FORM__CLOSE: null,
   POST_FORM__OPEN: null,
   POST_FORM__UPDATE_VALUE: null,
@@ -22,4 +21,16 @@ export const ActionTypes = keyMirror({
   FAVORITE__DELETE_REQUEST: null,
   FAVORITE__DELETE_SUCCEESS: null,
   FAVORITE__DELETE_FAIL: null,
+
+  USER__FETCH_REQUEST: null,
+  USER__FETCH_SUCCESS: null,
+  USER__FETCH_FAIL: null,
+
+  MODAL__OPEN: null,
+  MODAL__CLOSE: null,
+})
+
+export const UserModalTypes = keyMirror({
+  SIGNUP: null,
+  LOGIN: null,
 })

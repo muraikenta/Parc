@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
+import Avatar from 'material-ui/Avatar'
+import Dropdown, {DropdownTrigger, DropdownContent} from '../../components/dropdown'
 import PostFormModal from '../../components/post_form_modal'
 import {createPost} from '../../../actions/post'
 import {
@@ -19,6 +21,7 @@ const styles = {
     justifyContent: 'flex-end',
     alignItems: 'center',
     backgroundColor: '#fff',
+    height: 50,
     position: 'fixed',
     top: 0,
     left: 0,
@@ -29,10 +32,51 @@ const styles = {
     margin: 0,
     marginRight: 'auto',
   },
-  postIcon: {
-    height: '80%',
+  logoLink: {
+    display: 'block',
+    lineHeight: '50px',
+    padding: '0 14px',
+  },
+  menus: {
+    display: 'flex',
+  },
+  menu: {
+    padding: '0 14px',
     cursor: 'pointer',
-    marginLeft: 15,
+  },
+  avatar: {
+    verticalAlign: 'middle',
+    marginTop: -4,
+  },
+  userName: {
+    display: 'inline-block',
+    lineHeight: '50px',
+    padding: '0 10px',
+  },
+  dropdownContent: {
+    top: 50,
+    lineHeight: '16px',
+  },
+  postIcon: {
+    height: 30,
+    marginTop: 8,
+  },
+  avatar: {
+    verticalAlign: 'middle',
+    marginTop: -4,
+  },
+  userName: {
+    display: 'inline-block',
+    lineHeight: '50px',
+    padding: '0 10px',
+  },
+  dropdownContent: {
+    top: 50,
+    lineHeight: '16px',
+  },
+  postIcon: {
+    height: 30,
+    marginTop: 8,
   },
 }
 
@@ -66,15 +110,31 @@ class AfterLoginHeader extends React.PureComponent {
     return (
       <div>
         <nav style={styles.nav}>
-          <h1 style={styles.logo}>Parc</h1>
-          <img src='/images/mypage_icon.png' style={styles.postIcon} />
-          <div>{me.name}</div>
+          <h1 style={styles.logo}>
+            <Link to='/' style={styles.logoLink}>Parc</Link>
+          </h1>
+          <div style={styles.menus}>
+            <Dropdown style={styles.menu}>
+              <DropdownTrigger>
+                <Avatar
+                  src='/images/mypage_icon.png'
+                  size={35}
+                  style={styles.avatar}
+                />
+                <span style={styles.userName}>{me.name}</span>
+              </DropdownTrigger>
+              <DropdownContent style={styles.dropdownContent}>
+                <div><Link to='/mypage'>マイページ</Link></div>
+                <div onClick={() => { this.props.signOut() }}>ログアウト</div>
+              </DropdownContent>
+            </Dropdown>
           <img
             src='/images/post_icon.png'
-            style={styles.postIcon}
+            style={{...styles.menu, ...styles.postIcon}}
             onClick={() => { this.props.dispatch(openPostFormModal()) }}
           />
-          <div onClick={() => { this.props.signOut() }}>ログアウト</div>
+
+          </div>
         </nav>
         <PostFormModal
           postFormValue={this.props.postFormValue}

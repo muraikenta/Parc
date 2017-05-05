@@ -1,5 +1,8 @@
 import React from 'react'
 import {Provider} from 'react-redux'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import MaterialCustomTheme from '../../lib/styles/material-base-theme'
 
 import {BrowserRouter as Router} from 'react-router-dom'
 
@@ -16,14 +19,16 @@ import MyPage from '../containers/mypage_container'
 const Root = ({store}) => (
   <Provider store={store}>
     <Router>
-      <div>
-        <Header />
-        <div style={{paddingTop: 50}}>
-          <OnlyBeforeSignedInRoute path='/' exact={true} component={Landing} />
-          <PrivateRoute path='/timeline' component={Timeline} />
-          <PrivateRoute path='/user/:id' component={MyPage} />
+      <MuiThemeProvider muiTheme={getMuiTheme(MaterialCustomTheme)}>
+        <div>
+          <Header />
+          <div style={{paddingTop: 50}}>
+            <OnlyBeforeSignedInRoute path='/' exact={true} component={Landing} />
+            <PrivateRoute path='/timeline' component={Timeline} />
+            <PrivateRoute path='/mypage' component={MyPage} />
+          </div>
         </div>
-      </div>
+      </MuiThemeProvider>
     </Router>
   </Provider>
 )
