@@ -1,5 +1,8 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
+import FavoriteBtn from './favorite_btns/favorite_btn'
+import UnfavoriteBtn from './favorite_btns/unfavorite_btn'
+
 
 const styles = {
   wrapper: {
@@ -36,15 +39,15 @@ class Post extends React.PureComponent {
             <span style={styles.iconStatus}>1</span>
           </div>
           {this.props.favorited ? (
-            <div style={{cursor: 'pointer'}} onClick={this.props.unfavorite}>
-              <img src='/images/filled_heart.png' style={styles.icon} />
-              <span style={styles.iconStatus}>2</span>
-            </div>
+            <UnfavoriteBtn
+              onClickHandler={this.props.unfavorite}
+              favoritesCount={this.props.favoritesCount}
+            />
           ) : (
-            <div style={{cursor: 'pointer'}} onClick={this.props.favorite}>
-              <img src='/images/empty_heart.png' style={styles.icon} />
-              <span style={styles.iconStatus}>0</span>
-            </div>
+            <FavoriteBtn
+              onClickHandler={this.props.favorite}
+              favoritesCount={this.props.favoritesCount}
+            />
           )}
         </div>
       </div>
