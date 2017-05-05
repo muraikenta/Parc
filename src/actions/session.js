@@ -44,6 +44,9 @@ export const signup = ({name, email, password}) => (dispatch) => {
 export const signin = ({email, password}) => (dispatch) => {
   api.post('/auth/sign_in', {email, password})
      .then((res) => { dispatch(signInSuccess(res)) })
+     .catch((error) => {
+       dispatch(setApiError(FormTypes.SIGN_IN, error.response.data.errors))
+     })
 }
 
 const signInSuccess = (res) => (dispatch) => {
