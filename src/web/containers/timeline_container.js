@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
@@ -5,10 +6,14 @@ import Timeline from '../components/timeline'
 import {fetchPosts} from '../../actions/post'
 
 const mapStateToProps = (state) => ({
-  posts: state.posts.items,
+  posts: getPostsArray(state.posts.items),
   isFetching: state.posts.isFetching,
   error: state.posts.error,
 })
+
+const getPostsArray = (postsObj) => {
+  return _.values(postsObj)
+}
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({fetchPosts}, dispatch)

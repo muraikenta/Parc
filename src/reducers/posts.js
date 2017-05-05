@@ -1,9 +1,24 @@
 import {ActionTypes} from '../constants/app'
 
 const initialState = {
-  items: [],
+  items: {},
   isFetching: false,
   error: null,
+}
+
+const nomalizePosts = (items) => {
+  const nomalizedPosts = {}
+  items.forEach(post => {
+    nomalizedPosts[post.id] = post
+  })
+  return nomalizedPosts
+}
+
+const updatePost = (items, post) => {
+  return {
+    ...items,
+    [post.id]: post,
+  }
 }
 
 const posts = (state = initialState, action) => {
@@ -17,7 +32,7 @@ const posts = (state = initialState, action) => {
     case ActionTypes.POST__FETCH_SUCCESS:
       return {
         ...state,
-        items: action.items,
+        items: nomalizePosts(action.items),
         isFetching: false,
       }
     case ActionTypes.POST__FETCH_FAIL:
