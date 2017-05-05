@@ -25,8 +25,64 @@ export const fetchUserInfo = (id) => (dispatch) => {
   dispatch(fetchUserInfoRequest())
 
   api.get(`/users/${id}`)
-     .then((json) => { dispatch(fetchUserInfoSuccess(json.data)) })
-     .catch((error) => { dispatch(fetchUserInfoFail(error.message)) })
+   .then((json) => { dispatch(fetchUserInfoSuccess(json.data)) })
+   .catch((error) => { dispatch(fetchUserInfoFail(error.message)) })
+}
+
+const followRequest = () => {
+  return {
+    type: ActionTypes.USER__FOLLOW_REQUEST,
+  }
+}
+
+const followSuccess = (data) => {
+  return {
+    type: ActionTypes.USER__FOLLOW_SUCCESS,
+    data,
+  }
+}
+
+const followFail = (error) => {
+  return {
+    type: ActionTypes.USER__FOLLOW_FAIL,
+    error,
+  }
+}
+
+export const follow = (id) => (dispatch) => {
+  dispatch(followRequest())
+
+  api.post(`/users/${id}/follow`)
+     .then((json) => { dispatch(followSuccess(json.data)) })
+     .catch((error) => { dispatch(followFail(error)) })
+}
+
+const unfollowRequest = () => {
+  return {
+    type: ActionTypes.USER__UNFOLLOW_REQUEST,
+  }
+}
+
+const unfollowSuccess = (data) => {
+  return {
+    type: ActionTypes.USER__UNFOLLOW_SUCCESS,
+    data,
+  }
+}
+
+const unfollowFail = (error) => {
+  return {
+    type: ActionTypes.USER__UNFOLLOW_FAIL,
+    error,
+  }
+}
+
+export const unfollow = (id) => (dispatch) => {
+  dispatch(unfollowRequest())
+
+  api.delete(`/users/${id}/unfollow`)
+     .then((json) => { dispatch(unfollowSuccess(json.data)) })
+     .catch((error) => { dispatch(unfollowFail(error)) })
 }
 
 const updateProfileRequest = () => {

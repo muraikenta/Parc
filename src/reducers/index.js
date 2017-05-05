@@ -3,6 +3,7 @@ import posts from './posts'
 import postForm from './post_form'
 import modal from './modal'
 import session from './session'
+import favorites from './favorites'
 import userInfo from './user_info'
 
 const reducer = combineReducers({
@@ -10,6 +11,7 @@ const reducer = combineReducers({
   postForm,
   modal,
   session,
+  favorites,
   userInfo,
 })
 
