@@ -1,7 +1,25 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {UserModalTypes} from '../../../constants/app'
+import {ModalTypes} from '../../../constants/app'
 import {openModal} from '../../../actions/modal'
+
+class BeforeLoginHeader extends React.PureComponent {
+  render() {
+    return (
+      <div>
+        <nav style={styles.nav}>
+          <h1 style={styles.logo}>Parc</h1>
+          <span
+            onClick={() => this.props.dispatch(openModal(ModalTypes.SIGN_IN))}
+            style={styles.loginBtn}
+          >
+            ログイン
+          </span>
+        </nav>
+      </div>
+    )
+  }
+}
 
 const styles = {
   nav: {
@@ -24,24 +42,6 @@ const styles = {
   },
   loginBtn: {
     cursor: 'pointer',
-  }
-}
-
-class BeforeLoginHeader extends React.PureComponent {
-  render() {
-    return (
-      <div>
-        <nav style={styles.nav}>
-          <h1 style={styles.logo}>Parc</h1>
-          <span
-            onClick={() => this.props.dispatch(openModal(UserModalTypes.LOGIN))}
-            style={styles.loginBtn}
-          >
-            ログイン
-          </span>
-        </nav>
-      </div>
-    )
   }
 }
 

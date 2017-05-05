@@ -1,4 +1,4 @@
-import {ActionTypes, UserModalTypes} from '../constants/app'
+import {ActionTypes} from '../constants/app'
 
 const initialState = {
   isModalOpen: false,

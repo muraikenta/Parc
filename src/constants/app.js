@@ -24,9 +24,9 @@ export const ActionTypes = keyMirror({
   MODAL__CLOSE: null,
 })
 
-export const UserModalTypes = keyMirror({
-  SIGNUP: null,
-  LOGIN: null,
+export const ModalTypes = keyMirror({
+  SIGN_UP: null,
+  SIGN_IN: null,
 })
 
 export const FormTypes = keyMirror({

@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {UserModalTypes} from '../../constants/app'
+import {ModalTypes} from '../../constants/app'
 import {openModal, closeModal} from '../../actions/modal'
 import {signup, signin} from '../../actions/session'
 import UserModal from '../components/user_modal'
@@ -31,7 +31,7 @@ class Landing extends React.PureComponent {
         <h2>エンジニアが集まる場所</h2>
         <button
           type='button'
-          onClick={() => this.props.openModal(UserModalTypes.SIGNUP)}
+          onClick={() => this.props.openModal(ModalTypes.SIGN_UP)}
         >
           アカウント作成
         </button>
