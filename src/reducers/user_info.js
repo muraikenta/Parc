@@ -29,7 +29,7 @@ const userInfo = (state = initialState, action) => {
     case ActionTypes.PROFILE__UPDATE_SUCCESS:
       return {
         ...state,
-        data: [action.data, ...state.data],
+        data: [...state.data, action.data],
       }
     case ActionTypes.PROFILE__UPDATE_FAIL:
       return {
