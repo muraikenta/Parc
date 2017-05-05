@@ -2,6 +2,25 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import Radium from 'radium'
 
+@Radium
+class DropdownContent extends PureComponent {
+  render () {
+    const {children, isActive} = this.props
+
+    if (!isActive) {
+      return <div />
+    }
+
+    return (
+      <div style={[styles.root]}>
+        {React.Children.map(children, (child) => (
+          React.cloneElement(child, {style: [styles.item]})
+        ))}
+      </div>
+    )
+  }
+}
+
 const styles = {
   root: {
     position: 'absolute',
@@ -22,25 +41,6 @@ const styles = {
       background: '#f0f4f9',
     },
   },
-}
-
-@Radium
-class DropdownContent extends PureComponent {
-  render () {
-    const {children, isActive} = this.props
-
-    if (!isActive) {
-      return <div />
-    }
-
-    return (
-      <div style={[styles.root]}>
-        {React.Children.map(children, (child) => (
-          React.cloneElement(child, {style: [styles.item]})
-        ))}
-      </div>
-    )
-  }
 }
 
 DropdownContent.displayName = 'DropdownContent'
