@@ -33,7 +33,7 @@ const styles = {
   item: {
     display: 'block',
     cursor: 'pointer',
-    padding: '14px 20px',
+    padding: '14px 30px',
     transition: 'all 0.3s ease',
 
     ':hover': {
