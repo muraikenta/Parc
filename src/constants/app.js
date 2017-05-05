@@ -17,4 +17,12 @@ export const ActionTypes = keyMirror({
   USER__FETCH_REQUEST: null,
   USER__FETCH_SUCCESS: null,
   USER__FETCH_FAIL: null,
+
+  MODAL__OPEN: null,
+  MODAL__CLOSE: null,
+})
+
+export const UserModalTypes = keyMirror({
+  SIGNUP: null,
+  LOGIN: null,
 })

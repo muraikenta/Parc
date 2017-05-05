@@ -61,6 +61,23 @@ const styles = {
     height: 30,
     marginTop: 8,
   },
+  avatar: {
+    verticalAlign: 'middle',
+    marginTop: -4,
+  },
+  userName: {
+    display: 'inline-block',
+    lineHeight: '50px',
+    padding: '0 10px',
+  },
+  dropdownContent: {
+    top: 50,
+    lineHeight: '16px',
+  },
+  postIcon: {
+    height: 30,
+    marginTop: 8,
+  },
 }
 
 const mapStateToProps = (state) => ({
