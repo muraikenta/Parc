@@ -38,36 +38,56 @@ class SignUpForm extends React.PureComponent {
     const {onSubmit, headErrorMessages} = this.props
 
     return (
-      <form onSubmit={this.onSubmitHandler.bind(this)}>
+      <form
+        style={styles.form}
+        onSubmit={this.onSubmitHandler.bind(this)}
+      >
         <h2>アカウントを作成</h2>
         <FormError messages={headErrorMessages} />
         <TextField
           floatingLabelText='ユーザー名'
           ref='name'
+          style={styles.textField}
           onChange={this.handleChangeName.bind(this)}
         />
         <br />
         <TextField
           floatingLabelText='メールアドレス'
           ref='email'
+          style={styles.textField}
           onChange={this.handleChangeEmail.bind(this)}
         />
         <br />
         <TextField
           floatingLabelText='パスワード'
           type="password"
+          style={styles.textField}
           ref='password'
           onChange={this.handleChangePassword.bind(this)}
         />
         <br />
         <RaisedButton
           type='submit'
+          primary={true}
+          style={styles.submitButton}
           label="新規登録"
-          style={{marginTop: 20}}
         />
       </form>
     )
   }
+}
+
+const styles = {
+  form: {
+    textAlign: 'center',
+  },
+  textField: {
+    width: '100%',
+  },
+  submitButton: {
+    width: '100%',
+    marginTop: 20,
+  },
 }
 
 export default SignUpForm
