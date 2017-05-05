@@ -1,6 +1,8 @@
 import keyMirror from 'keymirror'
 
 export const ActionTypes = keyMirror({
+  FORM__API_ERROR: null,
+
   SESSION__SET_ME: null,
   SESSION__SIGN_IN: null,
   SESSION__SIGN_OUT: null,
@@ -39,4 +41,9 @@ export const ActionTypes = keyMirror({
 export const UserModalTypes = keyMirror({
   SIGNUP: null,
   LOGIN: null,
+})
+
+export const FormTypes = keyMirror({
+  SIGN_UP: null,
+  SIGN_IN: null,
 })

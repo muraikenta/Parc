@@ -1,26 +1,23 @@
 import React from 'react'
 import Modal from 'react-modal'
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import MaterialBaseTheme from '../../lib/styles/material-base-theme'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import {UserModalTypes} from '../../constants/app'
+import SignUpForm from '../containers/sign_up_form_container'
 
 const styles = {
   modal: {
     content : {
       position: 'absolute',
       top: '20%',
-      left: '35%',
-      right: '35%',
-      bottom: '40%',
+      padding: '20px',
+      margin: '0 auto',
+      width: 350,
       border: '1px solid #ccc',
-      background: '#fff',
       overflow: 'auto',
       WebkitOverflowScrolling: 'touch',
       borderRadius: '4px',
       outline: 'none',
-      padding: '20px'
     }
   },
 }
@@ -32,16 +29,6 @@ class UserModal extends React.PureComponent {
       name: '',
       email: '',
       password: '',
-    }
-  }
-
-  static childContextTypes = {
-    muiTheme: React.PropTypes.object,
-  }
-
-  getChildContext() {
-    return {
-      muiTheme: getMuiTheme(MaterialBaseTheme),
     }
   }
 
@@ -66,46 +53,13 @@ class UserModal extends React.PureComponent {
       identifier,
       openModal,
       closeModal,
-      signup,
       signin,
     } = this.props
 
     const displayModal = (() => {
       switch (identifier) {
         case UserModalTypes.SIGNUP:
-          return (
-            <div>
-              <TextField
-                hintText='ユーザー名'
-                ref='name'
-                onChange={this.handleChangeName.bind(this)}
-              />
-              <br />
-              <TextField
-                hintText='メールアドレス'
-                ref='email'
-                onChange={this.handleChangeEmail.bind(this)}
-              />
-              <br />
-              <TextField
-                hintText='パスワード'
-                type="password"
-                ref='password'
-                onChange={this.handleChangePassword.bind(this)}
-              />
-              <br />
-              <RaisedButton
-                label="新規登録"
-                onClick={() => signup(this.state.name, this.state.email, this.state.password)}
-              />
-              <br />
-              <span
-                onClick={() => openModal(UserModalTypes.LOGIN)}
-              >
-                <span style={{color: 'blue', cursor: 'pointer'}}>ログイン</span>はこちら
-              </span>
-            </div>
-          )
+          return <SignUpForm />
         case UserModalTypes.LOGIN:
           return (
             <div>
