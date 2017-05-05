@@ -64,13 +64,17 @@ class UserModal extends React.PureComponent {
 
 const styles = {
   modal: {
+    overlay: {
+      zIndex: 100,
+      backgroundColor : 'rgba(0, 0, 0, 0.75)',
+    },
     content : {
       position: 'absolute',
       top: '15%',
-      bottom: 'initial',
       padding: '40px 50px',
       margin: '0 auto',
       width: 300,
+      maxHeight: 370,
       border: '1px solid #ccc',
       overflow: 'auto',
       WebkitOverflowScrolling: 'touch',
