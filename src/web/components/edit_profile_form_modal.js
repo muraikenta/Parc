@@ -9,6 +9,17 @@ const styles = {
 }
 
 class EditProfileFormModal extends React.PureComponent {
+  constructor() {
+    super()
+    this.state = {
+      value: '',
+    }
+  }
+
+  onChange(e) {
+    this.setState({value: e.target.value})
+  }
+
   render() {
     return (
       <Modal
@@ -17,8 +28,15 @@ class EditProfileFormModal extends React.PureComponent {
         contentLabel='EditProfileFormModal'
       >
         <textarea
+          value={this.state.value}
           style={styles.textarea}
+          onChange={(e) => { this.onChange(e) }}
         />
+        <button
+          onClick={() => {this.props.submitProfile(this.state.value)}}
+        >
+          変更を保存
+        </button>
       </Modal>
     )
   }

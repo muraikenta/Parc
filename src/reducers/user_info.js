@@ -26,6 +26,16 @@ const userInfo = (state = initialState, action) => {
         isFetching: false,
         error: action.error,
       }
+    case ActionTypes.PROFILE__UPDATE_SUCCESS:
+      return {
+        ...state,
+        data: [action.data, ...state.data],
+      }
+    case ActionTypes.PROFILE__UPDATE_FAIL:
+      return {
+        ...state,
+        error: action.error,
+      }
     default:
       return state
   }

@@ -28,3 +28,31 @@ export const fetchUserInfo = (id) => (dispatch) => {
      .then((json) => { dispatch(fetchUserInfoSuccess(json.data)) })
      .catch((error) => { dispatch(fetchUserInfoFail(error.message)) })
 }
+
+const updateProfileRequest = () => {
+  return {
+    type: ActionTypes.PROFILE__UPDATE_REQUEST,
+  }
+}
+
+const updateProfileSuccess = (data) => {
+  return {
+    type: ActionTypes.PROFILE__UPDATE_SUCCESS,
+    data,
+  }
+}
+
+const updateProfileFail = (error) => {
+  return {
+    type: ActionTypes.PROFILE__UPDATE_FAIL,
+    error,
+  }
+}
+
+export const updateProfile = ({id, profile}) => (dispatch) => {
+  dispatch(updateProfileRequest())
+
+  api.put(`/users/${id}`, {id, profile})
+    .then((json) => { dispatch(updateProfileSuccess(json.data)) })
+    .catch((error) => { dispatch(updateProfileFail(error.data)) })
+}
