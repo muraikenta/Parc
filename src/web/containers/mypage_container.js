@@ -23,7 +23,7 @@ class MyPageContainer extends React.PureComponent {
     this.setState({isEditProfileFormModalOpen: true})
   }
 
-  cloaseEditProfileFormModal() {
+  closeEditProfileFormModal() {
     if (!this.state.isEditProfileFormModalOpen) return
     this.setState({isEditProfileFormModalOpen: false})
   }
@@ -46,7 +46,7 @@ class MyPageContainer extends React.PureComponent {
         <span onClick={this.openEditProfileFormModal.bind(this)}>プロフィール編集</span>
         <EditProfileFormModal
           isOpen={this.state.isEditProfileFormModalOpen}
-          onRequestClose={this.cloaseEditProfileFormModal.bind(this)}
+          onRequestClose={this.closeEditProfileFormModal.bind(this)}
         />
       </div>
     )
