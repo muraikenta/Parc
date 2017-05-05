@@ -49,8 +49,8 @@ class TimelineContainer extends React.PureComponent {
         )}
         <Timeline
           posts={posts}
-          favorite={(post) => { this.props.favorite(post) }}
-          unfavorite={(post) => { this.props.unfavorite(post) }}
+          favorite={this.props.favorite}
+          unfavorite={this.props.unfavorite}
         />
       </div>
     )
