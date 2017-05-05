@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {withRouter, Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import Avatar from 'material-ui/Avatar'
 import Dropdown, {DropdownTrigger, DropdownContent} from '../../components/dropdown'
 import PostFormModal from '../../components/post_form_modal'
@@ -88,13 +88,13 @@ const mapStateToProps = (state) => ({
   error: state.postForm.error,
 })
 
-const mergeProps = (stateProps, dispatchProps, ownProps) => {
+const mergeProps = (stateProps, dispatchProps) => {
   const {dispatch} = dispatchProps
   return {
     ...stateProps,
     ...dispatchProps,
     signOut: () => {
-      dispatch(signOut(stateProps.authData, () => { ownProps.history.push('/') }))
+      dispatch(signOut(stateProps.authData))
     },
   }
 }
@@ -148,4 +148,4 @@ class AfterLoginHeader extends React.PureComponent {
   }
 }
 
-export default withRouter(connect(mapStateToProps, null, mergeProps)(AfterLoginHeader))
+export default connect(mapStateToProps, null, mergeProps)(AfterLoginHeader)
