@@ -11,7 +11,6 @@ import {
   updatePostFormValue,
 } from '../../../actions/post_form_modal'
 import {signOut} from '../../../actions/session'
-import PostFormModal from '../../components/post_form_modal'
 
 const styles = {
   nav: {
