@@ -15,7 +15,6 @@ import {signOut} from '../../../actions/session'
 const styles = {
   nav: {
     borderBottom: '1px solid gray',
-    height: 45,
     padding: '0 20px',
     display: 'flex',
     justifyContent: 'flex-end',
@@ -43,23 +42,6 @@ const styles = {
   menu: {
     padding: '0 14px',
     cursor: 'pointer',
-  },
-  avatar: {
-    verticalAlign: 'middle',
-    marginTop: -4,
-  },
-  userName: {
-    display: 'inline-block',
-    lineHeight: '50px',
-    padding: '0 10px',
-  },
-  dropdownContent: {
-    top: 50,
-    lineHeight: '16px',
-  },
-  postIcon: {
-    height: 30,
-    marginTop: 8,
   },
   avatar: {
     verticalAlign: 'middle',
