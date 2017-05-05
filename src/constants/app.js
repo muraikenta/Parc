@@ -34,6 +34,10 @@ export const ActionTypes = keyMirror({
   USER__UNFOLLOW_SUCCESS: null,
   USER__UNFOLLOW_FAIL: null,
 
+  PROFILE__UPDATE_REQUEST: null,
+  PROFILE__UPDATE_SUCCESS: null,
+  PROFILE__UPDATE_FAIL: null,
+
   MODAL__OPEN: null,
   MODAL__CLOSE: null,
 })

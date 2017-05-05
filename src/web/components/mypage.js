@@ -1,6 +1,7 @@
 import React from 'react'
 import UserInfo from '../components/user_info'
 import EditProfileFormModal from '../components/edit_profile_form_modal'
+import {updateProfile} from '../../actions/user_info'
 
 class MyPage extends React.PureComponent {
   constructor() {
@@ -20,6 +21,12 @@ class MyPage extends React.PureComponent {
     this.setState({isEditProfileFormModalOpen: false})
   }
 
+  submitProfile(profile) {
+    const {dispatch} = this.props
+    dispatch(updateProfile({profile}))
+    this.setState({isEditProfileFormModalOpen: false})
+  }
+
   render() {
     return (
       <div>
@@ -30,6 +37,7 @@ class MyPage extends React.PureComponent {
         <EditProfileFormModal
           isOpen={this.state.isEditProfileFormModalOpen}
           onRequestClose={this.closeEditProfileFormModal.bind(this)}
+          submitProfile={this.submitProfile.bind(this)}
         />
       </div>
     )

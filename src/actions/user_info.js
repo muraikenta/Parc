@@ -84,3 +84,31 @@ export const unfollow = (id) => (dispatch) => {
      .then((json) => { dispatch(unfollowSuccess(json.data)) })
      .catch((error) => { dispatch(unfollowFail(error)) })
 }
+
+const updateProfileRequest = () => {
+  return {
+    type: ActionTypes.PROFILE__UPDATE_REQUEST,
+  }
+}
+
+const updateProfileSuccess = (data) => {
+  return {
+    type: ActionTypes.PROFILE__UPDATE_SUCCESS,
+    data,
+  }
+}
+
+const updateProfileFail = (error) => {
+  return {
+    type: ActionTypes.PROFILE__UPDATE_FAIL,
+    error,
+  }
+}
+
+export const updateProfile = ({id, profile}) => (dispatch) => {
+  dispatch(updateProfileRequest())
+
+  api.patch(`/users/${id}`, {profile})
+    .then((json) => { dispatch(updateProfileSuccess(json.data)) })
+    .catch((error) => { dispatch(updateProfileFail(error.message)) })
+}
