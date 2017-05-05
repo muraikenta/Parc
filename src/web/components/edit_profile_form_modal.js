@@ -1,10 +1,37 @@
 import React from 'react'
 import Modal from 'react-modal'
+import ReactMarkdown from 'react-markdown'
 
 const styles = {
-  textarea: {
-    width: '100%',
+  flexContainer: {
+    display: 'flex',
+    flexDirection: 'column',
     height: '100%',
+  },
+  flexHeader: {
+    flex: 0,
+    textAlign: 'center',
+  },
+  profiles: {
+    flex: 1,
+    display: 'flex',
+  },
+  profile: {
+    flex: 1,
+    height: '100%',
+    overflow: 'scroll',
+  },
+  textarea: {
+    padding: '0 2px',
+  },
+  markdownPreview: {
+    padding: '0 20px',
+    border: '1px solid black',
+  },
+  flexFooter: {
+    flex: 0,
+    paddingTop: 20,
+    textAlign: 'center',
   },
 }
 
@@ -27,16 +54,32 @@ class EditProfileFormModal extends React.PureComponent {
         onRequestClose={this.props.onRequestClose}
         contentLabel='EditProfileFormModal'
       >
-        <textarea
-          value={this.state.value}
-          style={styles.textarea}
-          onChange={(e) => { this.onChange(e) }}
-        />
-        <button
-          onClick={() => {this.props.submitProfile(this.state.value)}}
-        >
-          変更を保存
-        </button>
+        <div style={styles.flexContainer}>
+          <div
+            style={styles.flexHeader}
+          >
+            <h2>Edit Profile</h2>
+          </div>
+          <div style={styles.profiles}>
+            <textarea
+              value={this.state.value}
+              style={{...styles.profile, ...styles.textarea}}
+              onChange={(e) => { this.onChange(e) }}
+            />
+            <div style={{...styles.profile, ...styles.markdownPreview}}>
+              <ReactMarkdown
+                source={this.state.value}
+              />
+            </div>
+          </div>
+        </div>
+        <div style={styles.flexFooter}>
+          <button
+            onClick={() => { this.props.submitProfile(this.state.value) }}
+          >
+            変更を保存
+          </button>
+        </div>
       </Modal>
     )
   }
