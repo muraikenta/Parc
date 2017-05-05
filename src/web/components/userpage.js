@@ -2,19 +2,7 @@ import React from 'react'
 import UserInfo from '../components/user_info'
 
 const styles = {
-  followButton: {
-    position: 'relative',
-    display: 'inline-block',
-    padding: '0.25em 0.5em',
-    textDecoration: 'none',
-    color: '#fff',
-    background: '#03A9F4',
-    border: '1px solid #0f9ada',
-    borderRadius: 4,
-    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.2)',
-    textShadow: '0 1px 0 rgba(0,0,0,0.2)',
-  },
-  unfollowButton: {
+  button: {
     position: 'relative',
     display: 'inline-block',
     padding: '0.25em 0.5em',
@@ -49,7 +37,7 @@ class UserPage extends React.PureComponent {
               <a
                 href='#'
                 onClick={this.onUnfollowClick.bind(this)}
-                style={styles.unfollowButton}
+                style={styles.button}
               >
                 Unfollow
               </a>
@@ -60,7 +48,7 @@ class UserPage extends React.PureComponent {
                 <a
                   href='#'
                   onClick={this.onFollowClick.bind(this)}
-                  style={styles.followButton}
+                  style={styles.button}
                 >
                   Follow
                 </a>
