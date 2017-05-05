@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
-import Dropdown, {DropdownTrigger, DropdownContent} from 'react-simple-dropdown'
+import {Link} from 'react-router-dom'
 import Avatar from 'material-ui/Avatar'
+import Dropdown, {DropdownTrigger, DropdownContent} from '../../components/dropdown'
 import PostFormModal from '../../components/post_form_modal'
 import {createPost} from '../../../actions/post'
 import {
@@ -15,7 +15,6 @@ import {signOut} from '../../../actions/session'
 const styles = {
   nav: {
     borderBottom: '1px solid gray',
-    height: 45,
     padding: '0 20px',
     display: 'flex',
     justifyContent: 'flex-end',
@@ -31,6 +30,11 @@ const styles = {
   logo: {
     margin: 0,
     marginRight: 'auto',
+  },
+  logoLink: {
+    display: 'block',
+    lineHeight: '50px',
+    padding: '0 14px',
   },
   menus: {
     display: 'flex',
@@ -66,13 +70,13 @@ const mapStateToProps = (state) => ({
   error: state.postForm.error,
 })
 
-const mergeProps = (stateProps, dispatchProps, ownProps) => {
+const mergeProps = (stateProps, dispatchProps) => {
   const {dispatch} = dispatchProps
   return {
     ...stateProps,
     ...dispatchProps,
     signOut: () => {
-      dispatch(signOut(stateProps.authData, () => { ownProps.history.push('/') }))
+      dispatch(signOut(stateProps.authData))
     },
   }
 }
@@ -88,7 +92,9 @@ class AfterLoginHeader extends React.PureComponent {
     return (
       <div>
         <nav style={styles.nav}>
-          <h1 style={styles.logo}>Parc</h1>
+          <h1 style={styles.logo}>
+            <Link to='/' style={styles.logoLink}>Parc</Link>
+          </h1>
           <div style={styles.menus}>
             <Dropdown style={styles.menu}>
               <DropdownTrigger>
@@ -100,6 +106,7 @@ class AfterLoginHeader extends React.PureComponent {
                 <span style={styles.userName}>{me.name}</span>
               </DropdownTrigger>
               <DropdownContent style={styles.dropdownContent}>
+                <div><Link to='/mypage'>マイページ</Link></div>
                 <div onClick={() => { this.props.signOut() }}>ログアウト</div>
               </DropdownContent>
             </Dropdown>
@@ -123,4 +130,4 @@ class AfterLoginHeader extends React.PureComponent {
   }
 }
 
-export default withRouter(connect(mapStateToProps, null, mergeProps)(AfterLoginHeader))
+export default connect(mapStateToProps, null, mergeProps)(AfterLoginHeader)

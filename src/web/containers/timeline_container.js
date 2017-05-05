@@ -1,17 +1,23 @@
+import _ from 'lodash'
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import Timeline from '../components/timeline'
 import {fetchPosts} from '../../actions/post'
+import {favorite, unfavorite} from '../../actions/favorite'
 
 const mapStateToProps = (state) => ({
-  posts: state.posts.items,
+  posts: getPostsArray(state.posts.items),
   isFetching: state.posts.isFetching,
   error: state.posts.error,
 })
 
+const getPostsArray = (postsObj) => {
+  return _.values(postsObj)
+}
+
 const mapDispatchToProps = (dispatch) => (
-  bindActionCreators({fetchPosts}, dispatch)
+  bindActionCreators({fetchPosts, favorite, unfavorite}, dispatch)
 )
 
 class TimelineContainer extends React.PureComponent {
@@ -41,7 +47,11 @@ class TimelineContainer extends React.PureComponent {
             <a href='#' onClick={this.onTryAgainClick.bind(this)}>Try again</a>
           </div>
         )}
-        <Timeline posts={posts} />
+        <Timeline
+          posts={posts}
+          favorite={this.props.favorite}
+          unfavorite={this.props.unfavorite}
+        />
       </div>
     )
   }
