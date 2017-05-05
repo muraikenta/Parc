@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 const styles = {
   nav: {
     borderBottom: '1px solid gray',
-    height: 45,
+    height: 50,
     padding: '0 20px',
     display: 'flex',
     justifyContent: 'flex-end',
