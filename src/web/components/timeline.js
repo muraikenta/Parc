@@ -15,6 +15,8 @@ class Timeline extends React.PureComponent {
           <Post
             key={post.id}
             {...post}
+            favorite={() => { this.props.favorite(post) }}
+            unfavorite={() => { this.props.unfavorite(post) }}
           />
         ))}
       </div>

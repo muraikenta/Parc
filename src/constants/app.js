@@ -15,4 +15,11 @@ export const ActionTypes = keyMirror({
   POST_FORM__CLOSE: null,
   POST_FORM__OPEN: null,
   POST_FORM__UPDATE_VALUE: null,
+
+  FAVORITE__CREATE_REQUEST: null,
+  FAVORITE__CREATE_SUCCEESS: null,
+  FAVORITE__CREATE_FAIL: null,
+  FAVORITE__DELETE_REQUEST: null,
+  FAVORITE__DELETE_SUCCEESS: null,
+  FAVORITE__DELETE_FAIL: null,
 })

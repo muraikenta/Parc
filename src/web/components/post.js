@@ -35,10 +35,17 @@ class Post extends React.PureComponent {
             <img src='/images/retweet_icon.png' style={styles.icon} />
             <span style={styles.iconStatus}>1</span>
           </div>
-          <div style={{cursor: 'pointer'}}>
-            <img src='/images/fav_icon.png' style={styles.icon} />
-            <span style={styles.iconStatus}>2</span>
-          </div>
+          {this.props.favorited ? (
+            <div style={{cursor: 'pointer'}} onClick={this.props.unfavorite}>
+              <img src='/images/filled_heart.png' style={styles.icon} />
+              <span style={styles.iconStatus}>2</span>
+            </div>
+          ) : (
+            <div style={{cursor: 'pointer'}} onClick={this.props.favorite}>
+              <img src='/images/empty_heart.png' style={styles.icon} />
+              <span style={styles.iconStatus}>0</span>
+            </div>
+          )}
         </div>
       </div>
     )

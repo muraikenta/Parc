@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import Timeline from '../components/timeline'
 import {fetchPosts} from '../../actions/post'
+import {favorite, unfavorite} from '../../actions/favorite'
 
 const mapStateToProps = (state) => ({
   posts: getPostsArray(state.posts.items),
@@ -16,7 +17,7 @@ const getPostsArray = (postsObj) => {
 }
 
 const mapDispatchToProps = (dispatch) => (
-  bindActionCreators({fetchPosts}, dispatch)
+  bindActionCreators({fetchPosts, favorite, unfavorite}, dispatch)
 )
 
 class TimelineContainer extends React.PureComponent {
@@ -46,7 +47,11 @@ class TimelineContainer extends React.PureComponent {
             <a href='#' onClick={this.onTryAgainClick.bind(this)}>Try again</a>
           </div>
         )}
-        <Timeline posts={posts} />
+        <Timeline
+          posts={posts}
+          favorite={(post) => { this.props.favorite(post) }}
+          unfavorite={(post) => { this.props.unfavorite(post) }}
+        />
       </div>
     )
   }

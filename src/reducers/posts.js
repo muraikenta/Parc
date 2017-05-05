@@ -50,6 +50,12 @@ const posts = (state = initialState, action) => {
       return {
         ...state,
       }
+    case ActionTypes.FAVORITE__CREATE_SUCCEESS:
+    case ActionTypes.FAVORITE__DELETE_SUCCEESS:
+      return {
+        ...state,
+        items: updatePost(state.items, action.post),
+      }
     default:
       return state
   }
