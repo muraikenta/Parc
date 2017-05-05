@@ -22,4 +22,12 @@ export const ActionTypes = keyMirror({
   PROFILE__UPDATE_REQUEST: null,
   PROFILE__UPDATE_SUCCESS: null,
   PROFILE__UPDATE_FAIL: null,
+
+  MODAL__OPEN: null,
+  MODAL__CLOSE: null,
+})
+
+export const UserModalTypes = keyMirror({
+  SIGNUP: null,
+  LOGIN: null,
 })

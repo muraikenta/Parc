@@ -32,12 +32,34 @@ const styles = {
     margin: 0,
     marginRight: 'auto',
   },
+  logoLink: {
+    display: 'block',
+    lineHeight: '50px',
+    padding: '0 14px',
+  },
   menus: {
     display: 'flex',
   },
   menu: {
     padding: '0 14px',
     cursor: 'pointer',
+  },
+  avatar: {
+    verticalAlign: 'middle',
+    marginTop: -4,
+  },
+  userName: {
+    display: 'inline-block',
+    lineHeight: '50px',
+    padding: '0 10px',
+  },
+  dropdownContent: {
+    top: 50,
+    lineHeight: '16px',
+  },
+  postIcon: {
+    height: 30,
+    marginTop: 8,
   },
   avatar: {
     verticalAlign: 'middle',
@@ -88,7 +110,9 @@ class AfterLoginHeader extends React.PureComponent {
     return (
       <div>
         <nav style={styles.nav}>
-          <h1 style={styles.logo}>Parc</h1>
+          <h1 style={styles.logo}>
+            <Link to='/' style={styles.logoLink}>Parc</Link>
+          </h1>
           <div style={styles.menus}>
             <Dropdown style={styles.menu}>
               <DropdownTrigger>
