@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
+import Avatar from 'material-ui/Avatar'
+import Dropdown, {DropdownTrigger, DropdownContent} from '../../components/dropdown'
 import {createPost} from '../../../actions/post'
 import {
   closePostFormModal,
@@ -19,6 +21,7 @@ const styles = {
     justifyContent: 'flex-end',
     alignItems: 'center',
     backgroundColor: '#fff',
+    height: 50,
     position: 'fixed',
     top: 0,
     left: 0,
@@ -29,11 +32,36 @@ const styles = {
     margin: 0,
     marginRight: 'auto',
   },
-  postIcon: {
-    height: '80%',
+  logoLink: {
+    display: 'block',
+    lineHeight: '50px',
+    padding: '0 14px',
+  },
+  menus: {
+    display: 'flex',
+  },
+  menu: {
+    padding: '0 14px',
     cursor: 'pointer',
     marginLeft: 15,
-  }
+  },
+  avatar: {
+    verticalAlign: 'middle',
+    marginTop: -4,
+  },
+  userName: {
+    display: 'inline-block',
+    lineHeight: '50px',
+    padding: '0 10px',
+  },
+  dropdownContent: {
+    top: 50,
+    lineHeight: '16px',
+  },
+  postIcon: {
+    height: 30,
+    marginTop: 8,
+  },
 }
 
 const mapStateToProps = (state) => ({

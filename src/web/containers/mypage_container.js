@@ -1,32 +1,8 @@
-import React from 'react'
 import {connect} from 'react-redux'
 import MyPage from '../components/mypage'
-import {fetchUserInfo} from '../../actions/user_info'
 
 const mapStateToProps = (state) => ({
-  userInfo: state.userInfo.data,
-  isFetching: state.userInfo.isFetching,
-  error: state.userInfo.error,
+  userInfo: state.session.me,
 })
 
-class MyPageContainer extends React.PureComponent {
-  componentWillMount() {
-    const {dispatch} = this.props
-    dispatch(fetchUserInfo(1))
-  }
-
-  render() {
-    const {
-      userInfo,
-      isFetching,
-      error,
-    } = this.props
-
-    return (
-      <div>
-        <MyPage userInfo={userInfo} />
-      </div>
-    )
-  }
-}
-export default connect(mapStateToProps)(MyPageContainer)
+export default connect(mapStateToProps)(MyPage)
