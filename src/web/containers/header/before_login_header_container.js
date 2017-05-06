@@ -23,18 +23,18 @@ class BeforeLoginHeader extends React.PureComponent {
 
 const styles = {
   nav: {
-    borderBottom: '1px solid gray',
     height: 50,
-    padding: '0 20px',
+    padding: '15px 35px',
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    backgroundColor: '#fff',
     position: 'fixed',
     top: 0,
     left: 0,
     right: 0,
     zIndex: 10,
+    color: 'white',
+    opacity: 0.85,
   },
   logo: {
     margin: 0,
