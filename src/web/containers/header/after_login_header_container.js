@@ -86,7 +86,7 @@ class AfterLoginHeader extends React.PureComponent {
 
 const styles = {
   nav: {
-    borderBottom: '1px solid gray',
+    borderBottom: '1px solid rgba(128, 128, 128, 0.19)',
     height: 45,
     padding: '0 20px',
     display: 'flex',

@@ -3,15 +3,18 @@ import ReactMarkdown from 'react-markdown'
 
 const styles = {
   wrapper: {
-    padding: '9px 12px',
+    padding: '12px 16px',
     borderLeft: '1px solid #e6ecf0',
     borderRight: '1px solid #e6ecf0',
     borderBottom: '1px solid #e6ecf0',
   },
-  iconWrapper: {
+  iconSection: {
     display: 'flex',
-    justifyContent: 'space-around',
     passingTop: 5,
+  },
+  iconBlock: {
+    cursor: 'pointer',
+    marginRight: 40,
   },
   icon: {
     width: 20,
@@ -30,12 +33,12 @@ class Post extends React.PureComponent {
         <ReactMarkdown
           source={this.props.content}
         />
-        <div style={styles.iconWrapper}>
-          <div style={{cursor: 'pointer'}}>
+        <div style={styles.iconSection}>
+          <div style={styles.iconBlock}>
             <img src='/images/retweet_icon.png' style={styles.icon} />
             <span style={styles.iconStatus}>1</span>
           </div>
-          <div style={{cursor: 'pointer'}}>
+          <div style={styles.iconBlock}>
             <img src='/images/fav_icon.png' style={styles.icon} />
             <span style={styles.iconStatus}>2</span>
           </div>
