@@ -1,6 +1,6 @@
 import React from 'react'
 import Modal from 'react-modal'
-import ReactMarkdown from 'react-markdown'
+import Markdown from './markdown'
 
 const styles = {
   flexContainer: {
@@ -56,9 +56,7 @@ class PostFormModal extends React.PureComponent {
               onChange={(e) => { this.props.onPostFormChange(e.target.value) }}
             />
             <div style={{...styles.content, ...styles.markdownPreview}}>
-              <ReactMarkdown
-                source={this.props.postFormValue}
-              />
+              <Markdown source={this.props.postFormValue} />
             </div>
           </div>
           <div style={styles.flexFooter}>
