@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import UserPage from '../components/userpage'
+import UserInfo from '../components/user_info/user_info'
 import {
   fetchUserInfo,
   follow,
@@ -51,7 +51,7 @@ class UserPageContainer extends React.PureComponent {
         )
       }
       return (
-        <UserPage
+        <UserInfo
           userInfo={userInfo}
           follow={follow}
           unfollow={unfollow}
@@ -60,11 +60,18 @@ class UserPageContainer extends React.PureComponent {
     })()
 
     return (
-      <div>
+      <div style={styles.wrapper}>
         {displayContent}
       </div>
     )
   }
+}
+
+const styles = {
+  wrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserPageContainer)
