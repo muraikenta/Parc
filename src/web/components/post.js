@@ -1,28 +1,38 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import Markdown from './markdown'
 import FavoriteBtn from './favorite_btns/favorite_btn'
 import UnfavoriteBtn from './favorite_btns/unfavorite_btn'
 
 class Post extends React.PureComponent {
   render() {
+    const {
+      user,
+      content,
+      favorited,
+      favoritesCount,
+      favorite,
+      unfavorite,
+    } = this.props
+
     return (
       <div style={styles.wrapper}>
-        <span style={styles.userName}>{this.props.user.name}</span>
-        <Markdown source={this.props.content} />
+        <Link to={`/users/${user.id}`} style={styles.userName}>{user.name}</Link>
+        <Markdown source={content} />
         <div style={styles.iconSection}>
           <div style={styles.iconBlock}>
             <img src='/images/retweet_icon.png' style={styles.icon} />
             <span style={styles.iconStatus}>1</span>
           </div>
-          {this.props.favorited ? (
+          {favorited ? (
             <UnfavoriteBtn
-              onClickHandler={this.props.unfavorite}
-              favoritesCount={this.props.favoritesCount}
+              onClickHandler={unfavorite}
+              favoritesCount={favoritesCount}
             />
           ) : (
             <FavoriteBtn
-              onClickHandler={this.props.favorite}
-              favoritesCount={this.props.favoritesCount}
+              onClickHandler={favorite}
+              favoritesCount={favoritesCount}
             />
           )}
         </div>
