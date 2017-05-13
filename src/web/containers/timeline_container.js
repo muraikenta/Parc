@@ -8,7 +8,6 @@ import {favorite, unfavorite} from '../../actions/favorite'
 
 const mapStateToProps = (state) => ({
   posts: getPostsArray(state.posts.items),
-  isFetching: state.posts.isFetching,
   error: state.posts.error,
 })
 
@@ -33,14 +32,11 @@ class TimelineContainer extends React.PureComponent {
   render() {
     const {
       posts,
-      isFetching,
       error,
     } = this.props
 
     return (
       <div style={{margin: '0 25%'}}>
-        <h2>Timeline</h2>
-        {isFetching && <p>Now Loading...</p>}
         {error && (
           <div>
             <span>Failed to access server. </span>

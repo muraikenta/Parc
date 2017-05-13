@@ -1,9 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import Radium from 'radium'
 import {Link} from 'react-router-dom'
-import Avatar from 'material-ui/Avatar'
-import Dropdown, {DropdownTrigger, DropdownContent} from '../../components/dropdown'
-import PostFormModal from '../../components/post_form_modal'
 import {createPost} from '../../../actions/post'
 import {
   closePostFormModal,
@@ -11,56 +9,11 @@ import {
   updatePostFormValue,
 } from '../../../actions/post_form_modal'
 import {signOut} from '../../../actions/session'
+import Dropdown, {DropdownTrigger, DropdownContent} from '../../components/dropdown'
+import PostFormModal from '../../components/post_form_modal'
+import UserIcon from '../../components/user_icon'
 
-const styles = {
-  nav: {
-    borderBottom: '1px solid gray',
-    padding: '0 20px',
-    display: 'flex',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    height: 50,
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex: 10,
-  },
-  logo: {
-    margin: 0,
-    marginRight: 'auto',
-  },
-  logoLink: {
-    display: 'block',
-    lineHeight: '50px',
-    padding: '0 14px',
-  },
-  menus: {
-    display: 'flex',
-  },
-  menu: {
-    padding: '0 14px',
-    cursor: 'pointer',
-  },
-  avatar: {
-    verticalAlign: 'middle',
-    marginTop: -4,
-  },
-  userName: {
-    display: 'inline-block',
-    lineHeight: '50px',
-    padding: '0 10px',
-  },
-  dropdownContent: {
-    top: 50,
-    lineHeight: '16px',
-  },
-  postIcon: {
-    height: 30,
-    marginTop: 8,
-  },
-}
+const RadiumLink = Radium(Link)
 
 const mapStateToProps = (state) => ({
   me: state.session.me,
@@ -81,6 +34,7 @@ const mergeProps = (stateProps, dispatchProps) => {
   }
 }
 
+@Radium
 class AfterLoginHeader extends React.PureComponent {
   submitPost() {
     const {dispatch, postFormValue} = this.props
@@ -98,16 +52,12 @@ class AfterLoginHeader extends React.PureComponent {
           <div style={styles.menus}>
             <Dropdown style={styles.menu}>
               <DropdownTrigger>
-                <Avatar
-                  src='/images/mypage_icon.png'
-                  size={35}
-                  style={styles.avatar}
-                />
+                <UserIcon src={me.image} style={styles.userIcon} />
                 <span style={styles.userName}>{me.name}</span>
               </DropdownTrigger>
               <DropdownContent style={styles.dropdownContent}>
-                <div><Link to='/mypage'>マイページ</Link></div>
-                <div onClick={() => { this.props.signOut() }}>ログアウト</div>
+                <RadiumLink to='/mypage'>マイページ</RadiumLink>
+                <a onClick={() => { this.props.signOut() }}>ログアウト</a>
               </DropdownContent>
             </Dropdown>
           <img
@@ -128,6 +78,73 @@ class AfterLoginHeader extends React.PureComponent {
       </div>
     )
   }
+}
+
+const styles = {
+  nav: {
+    borderBottom: '1px solid rgba(128, 128, 128, 0.19)',
+    height: 45,
+    padding: '0 20px',
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    height: 50,
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 10,
+  },
+  logo: {
+    margin: '0 auto 0 0',
+  },
+  logoLink: {
+    display: 'block',
+    lineHeight: '50px',
+    padding: '0 14px',
+  },
+  menus: {
+    display: 'flex',
+  },
+  menu: {
+    padding: '0 14px',
+    cursor: 'pointer',
+  },
+  userIcon: {
+    width: 35,
+    height: 35,
+  },
+  userName: {
+    display: 'inline-block',
+    lineHeight: '50px',
+    padding: '0 10px',
+  },
+  dropdownContent: {
+    top: 50,
+    lineHeight: '16px',
+  },
+  postIcon: {
+    height: 30,
+    marginTop: 8,
+  },
+  avatar: {
+    verticalAlign: 'middle',
+    marginTop: -4,
+  },
+  userName: {
+    display: 'inline-block',
+    lineHeight: '50px',
+    padding: '0 10px',
+  },
+  dropdownContent: {
+    top: 50,
+    lineHeight: '16px',
+  },
+  postIcon: {
+    height: 30,
+    marginTop: 8,
+  },
 }
 
 export default connect(mapStateToProps, null, mergeProps)(AfterLoginHeader)

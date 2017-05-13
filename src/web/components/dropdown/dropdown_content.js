@@ -14,7 +14,7 @@ class DropdownContent extends PureComponent {
     return (
       <div style={[styles.root]}>
         {React.Children.map(children, (child) => (
-          React.cloneElement(child, {style: [styles.item]})
+          React.cloneElement(child, {style: styles.item})
         ))}
       </div>
     )
