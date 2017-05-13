@@ -86,6 +86,7 @@ const styles = {
   },
   submitButton: {
     width: '100%',
+    height: 50,
     marginTop: 20,
   },
 }

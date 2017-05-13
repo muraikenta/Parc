@@ -71,3 +71,12 @@ img {
 input:focus {
   outline: 0;
 }
+
+button {
+  cursor: pointer;
+  border: 1px solid;
+}
+
+button:focus {
+  outline: 0;
+}
