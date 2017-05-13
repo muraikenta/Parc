@@ -1,27 +1,42 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import Markdown from './markdown'
+import UserIcon from './user_icon'
 import FavoriteBtn from './favorite_btns/favorite_btn'
 import UnfavoriteBtn from './favorite_btns/unfavorite_btn'
 
 class Post extends React.PureComponent {
   render() {
+    const {
+      user,
+      content,
+      favorited,
+      favoritesCount,
+      favorite,
+      unfavorite,
+    } = this.props
+
     return (
       <div style={styles.wrapper}>
-        <Markdown source={this.props.content} />
+        <Link to={`/users/${user.id}`} style={styles.userName}>
+          <UserIcon image={user.image} style={styles.userIcon} />
+          {user.name}
+        </Link>
+        <Markdown source={content} />
         <div style={styles.iconSection}>
           <div style={styles.iconBlock}>
             <img src='/images/retweet_icon.png' style={styles.icon} />
             <span style={styles.iconStatus}>1</span>
           </div>
-          {this.props.favorited ? (
+          {favorited ? (
             <UnfavoriteBtn
-              onClickHandler={this.props.unfavorite}
-              favoritesCount={this.props.favoritesCount}
+              onClickHandler={unfavorite}
+              favoritesCount={favoritesCount}
             />
           ) : (
             <FavoriteBtn
-              onClickHandler={this.props.favorite}
-              favoritesCount={this.props.favoritesCount}
+              onClickHandler={favorite}
+              favoritesCount={favoritesCount}
             />
           )}
         </div>
@@ -37,9 +52,16 @@ const styles = {
     borderRight: '1px solid #e6ecf0',
     borderBottom: '1px solid #e6ecf0',
   },
+  userIcon: {
+    marginRight: 12,
+    float: 'left',
+  },
+  userName: {
+    fontWeight: 'bold',
+  },
   iconSection: {
     display: 'flex',
-    passingTop: 5,
+    passingTop: 10,
   },
   iconBlock: {
     cursor: 'pointer',

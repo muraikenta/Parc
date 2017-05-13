@@ -2,9 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import Radium from 'radium'
 import {Link} from 'react-router-dom'
-import Avatar from 'material-ui/Avatar'
-import Dropdown, {DropdownTrigger, DropdownContent} from '../../components/dropdown'
-import PostFormModal from '../../components/post_form_modal'
 import {createPost} from '../../../actions/post'
 import {
   closePostFormModal,
@@ -12,6 +9,9 @@ import {
   updatePostFormValue,
 } from '../../../actions/post_form_modal'
 import {signOut} from '../../../actions/session'
+import Dropdown, {DropdownTrigger, DropdownContent} from '../../components/dropdown'
+import PostFormModal from '../../components/post_form_modal'
+import UserIcon from '../../components/user_icon'
 
 const RadiumLink = Radium(Link)
 
@@ -52,11 +52,7 @@ class AfterLoginHeader extends React.PureComponent {
           <div style={styles.menus}>
             <Dropdown style={styles.menu}>
               <DropdownTrigger>
-                <Avatar
-                  src='/images/mypage_icon.png'
-                  size={35}
-                  style={styles.avatar}
-                />
+                <UserIcon src={me.image} style={styles.userIcon} />
                 <span style={styles.userName}>{me.name}</span>
               </DropdownTrigger>
               <DropdownContent style={styles.dropdownContent}>
@@ -115,9 +111,9 @@ const styles = {
     padding: '0 14px',
     cursor: 'pointer',
   },
-  avatar: {
-    verticalAlign: 'middle',
-    marginTop: -4,
+  userIcon: {
+    width: 35,
+    height: 35,
   },
   userName: {
     display: 'inline-block',
