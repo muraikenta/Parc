@@ -1,7 +1,34 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
+import Markdown from './markdown'
 import FavoriteBtn from './favorite_btns/favorite_btn'
 import UnfavoriteBtn from './favorite_btns/unfavorite_btn'
+
+class Post extends React.PureComponent {
+  render() {
+    return (
+      <div style={styles.wrapper}>
+        <Markdown source={this.props.content} />
+        <div style={styles.iconSection}>
+          <div style={styles.iconBlock}>
+            <img src='/images/retweet_icon.png' style={styles.icon} />
+            <span style={styles.iconStatus}>1</span>
+          </div>
+          {this.props.favorited ? (
+            <UnfavoriteBtn
+              onClickHandler={this.props.unfavorite}
+              favoritesCount={this.props.favoritesCount}
+            />
+          ) : (
+            <FavoriteBtn
+              onClickHandler={this.props.favorite}
+              favoritesCount={this.props.favoritesCount}
+            />
+          )}
+        </div>
+      </div>
+    )
+  }
+}
 
 const styles = {
   wrapper: {
@@ -26,35 +53,6 @@ const styles = {
     marginLeft: 7,
     color: 'rgba(170, 184, 194, 1)',
   },
-}
-
-class Post extends React.PureComponent {
-  render() {
-    return (
-      <div style={styles.wrapper}>
-        <ReactMarkdown
-          source={this.props.content}
-        />
-        <div style={styles.iconSection}>
-          <div style={styles.iconBlock}>
-            <img src='/images/retweet_icon.png' style={styles.icon} />
-            <span style={styles.iconStatus}>1</span>
-          </div>
-          {this.props.favorited ? (
-            <UnfavoriteBtn
-              onClickHandler={this.props.unfavorite}
-              favoritesCount={this.props.favoritesCount}
-            />
-          ) : (
-            <FavoriteBtn
-              onClickHandler={this.props.favorite}
-              favoritesCount={this.props.favoritesCount}
-            />
-          )}
-        </div>
-      </div>
-    )
-  }
 }
 
 export default Post
