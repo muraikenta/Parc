@@ -1,5 +1,7 @@
 import React from 'react'
 import Markdown from './markdown'
+import FavoriteBtn from './favorite_btns/favorite_btn'
+import UnfavoriteBtn from './favorite_btns/unfavorite_btn'
 
 class Post extends React.PureComponent {
   render() {
@@ -11,10 +13,17 @@ class Post extends React.PureComponent {
             <img src='/images/retweet_icon.png' style={styles.icon} />
             <span style={styles.iconStatus}>1</span>
           </div>
-          <div style={styles.iconBlock}>
-            <img src='/images/fav_icon.png' style={styles.icon} />
-            <span style={styles.iconStatus}>2</span>
-          </div>
+          {this.props.favorited ? (
+            <UnfavoriteBtn
+              onClickHandler={this.props.unfavorite}
+              favoritesCount={this.props.favoritesCount}
+            />
+          ) : (
+            <FavoriteBtn
+              onClickHandler={this.props.favorite}
+              favoritesCount={this.props.favoritesCount}
+            />
+          )}
         </div>
       </div>
     )

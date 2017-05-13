@@ -24,6 +24,12 @@ const session = (state = initialState, action) => {
         me: action.me,
       }
 
+    case ActionTypes.PROFILE__UPDATE_SUCCESS:
+      return {
+        ...state,
+        me: action.data,
+      }
+
     default:
       return state
   }
