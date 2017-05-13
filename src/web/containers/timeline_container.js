@@ -39,7 +39,6 @@ class TimelineContainer extends React.PureComponent {
 
     return (
       <div style={{margin: '0 25%'}}>
-        <h2>Timeline</h2>
         {isFetching && <p>Now Loading...</p>}
         {error && (
           <div>
