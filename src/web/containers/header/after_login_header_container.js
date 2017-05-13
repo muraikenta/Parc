@@ -112,8 +112,8 @@ const styles = {
     cursor: 'pointer',
   },
   userIcon: {
-    width: 40,
-    height: 40,
+    width: 35,
+    height: 35,
   },
   userName: {
     display: 'inline-block',
