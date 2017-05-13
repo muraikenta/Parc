@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import Markdown from './markdown'
+import UserIcon from './user_icon'
 import FavoriteBtn from './favorite_btns/favorite_btn'
 import UnfavoriteBtn from './favorite_btns/unfavorite_btn'
 
@@ -17,7 +18,10 @@ class Post extends React.PureComponent {
 
     return (
       <div style={styles.wrapper}>
-        <Link to={`/users/${user.id}`} style={styles.userName}>{user.name}</Link>
+        <Link to={`/users/${user.id}`} style={styles.userName}>
+          <UserIcon image={user.image} style={styles.userIcon} />
+          {user.name}
+        </Link>
         <Markdown source={content} />
         <div style={styles.iconSection}>
           <div style={styles.iconBlock}>
@@ -47,6 +51,10 @@ const styles = {
     borderLeft: '1px solid #e6ecf0',
     borderRight: '1px solid #e6ecf0',
     borderBottom: '1px solid #e6ecf0',
+  },
+  userIcon: {
+    marginRight: 12,
+    float: 'left',
   },
   userName: {
     fontWeight: 'bold',
