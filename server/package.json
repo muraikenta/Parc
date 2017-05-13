@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "PORT=8000 nodemon index.js"
+    "start": "nodemon index.js"
   },
   "dependencies": {
     "ejs": "^2.5.6",
