@@ -7,6 +7,7 @@ class Post extends React.PureComponent {
   render() {
     return (
       <div style={styles.wrapper}>
+        <span style={styles.userName}>{this.props.user.name}</span>
         <Markdown source={this.props.content} />
         <div style={styles.iconSection}>
           <div style={styles.iconBlock}>
@@ -37,9 +38,12 @@ const styles = {
     borderRight: '1px solid #e6ecf0',
     borderBottom: '1px solid #e6ecf0',
   },
+  userName: {
+    fontWeight: 'bold',
+  },
   iconSection: {
     display: 'flex',
-    passingTop: 5,
+    passingTop: 10,
   },
   iconBlock: {
     cursor: 'pointer',
