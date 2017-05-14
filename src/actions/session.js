@@ -32,8 +32,8 @@ export const fetchMe = ({uid, accessToken, client}) => (dispatch) => {
      })
 }
 
-export const signup = ({name, email, password}) => (dispatch) => {
-  api.post('/auth', {name, email, password})
+export const signup = ({name, username, email, password}) => (dispatch) => {
+  api.post('/auth', {name, username, email, password})
      .then((res) => { dispatch(signUpSuccess(res)) })
      .catch((error) => {
        // TODO: camelize full_messages
@@ -41,8 +41,8 @@ export const signup = ({name, email, password}) => (dispatch) => {
      })
 }
 
-export const signin = ({email, password}) => (dispatch) => {
-  api.post('/auth/sign_in', {email, password})
+export const signin = ({login, password}) => (dispatch) => {
+  api.post('/auth/sign_in', {login, password})
      .then((res) => { dispatch(signInSuccess(res)) })
      .catch((error) => {
        dispatch(setApiError(FormTypes.SIGN_IN, error.response.data.errors))
