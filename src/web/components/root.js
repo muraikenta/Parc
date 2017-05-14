@@ -27,7 +27,7 @@ const Root = ({store}) => (
             <OnlyBeforeSignedInRoute path='/' exact={true} component={Landing} />
             <PrivateRoute path='/timeline' component={Timeline} />
             <PrivateRoute path='/mypage' component={MyPage} />
-            <PrivateRoute path='/users/:id' component={UserPage} />
+            <PrivateRoute path='/users/:username' component={UserPage} />
           </div>
         </div>
       </MuiThemeProvider>
