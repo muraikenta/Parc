@@ -7,14 +7,14 @@ class SignInForm extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      email: '',
+      login: '',
       password: '',
     }
   }
 
-  handleChangeEmail() {
-    const email = this.refs.email.getValue()
-    this.setState({email})
+  handleChangeLogin() {
+    const login = this.refs.login.getValue()
+    this.setState({login})
   }
 
   handleChangePassword() {
@@ -23,9 +23,9 @@ class SignInForm extends React.PureComponent {
   }
 
   onSubmitHandler(e) {
-    const {email, password} = this.state
+    const {login, password} = this.state
     e.preventDefault()
-    this.props.onSubmit({email, password})
+    this.props.onSubmit({login, password})
   }
 
   render() {
@@ -39,10 +39,10 @@ class SignInForm extends React.PureComponent {
         <h2>ログイン</h2>
         <FormError messages={headErrorMessages} />
         <TextField
-          floatingLabelText='メールアドレス'
+          floatingLabelText='メールアドレスまたはアカウント名'
           style={styles.textField}
-          ref='email'
-          onChange={this.handleChangeEmail.bind(this)}
+          ref='login'
+          onChange={this.handleChangeLogin.bind(this)}
         />
         <br />
         <TextField

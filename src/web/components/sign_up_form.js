@@ -8,6 +8,7 @@ class SignUpForm extends React.PureComponent {
     super(props)
     this.state = {
       name: '',
+      username: '',
       email: '',
       password: '',
     }
@@ -16,6 +17,11 @@ class SignUpForm extends React.PureComponent {
   handleChangeName() {
     const name = this.refs.name.getValue()
     this.setState({name})
+  }
+
+  handleChangeUsername() {
+    const username = this.refs.username.getValue()
+    this.setState({username})
   }
 
   handleChangeEmail() {
@@ -29,9 +35,9 @@ class SignUpForm extends React.PureComponent {
   }
 
   onSubmitHandler(e) {
-    const {name, email, password} = this.state
+    const {name, username, email, password} = this.state
     e.preventDefault()
-    this.props.onSubmit({name, email, password})
+    this.props.onSubmit({name, username, email, password})
   }
 
   render() {
@@ -49,6 +55,13 @@ class SignUpForm extends React.PureComponent {
           ref='name'
           style={styles.textField}
           onChange={this.handleChangeName.bind(this)}
+        />
+        <br />
+        <TextField
+          floatingLabelText='アカウント名'
+          ref='username'
+          style={styles.textField}
+          onChange={this.handleChangeUsername.bind(this)}
         />
         <br />
         <TextField
