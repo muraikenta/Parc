@@ -5,7 +5,7 @@ import posts from './posts'
 import postForm from './post_form'
 import session from './session'
 import favorites from './favorites'
-import userInfo from './user_info'
+import user from './user'
 
 const reducer = combineReducers({
   forms,
@@ -14,7 +14,7 @@ const reducer = combineReducers({
   postForm,
   session,
   favorites,
-  userInfo,
+  user,
 })
 
 export default reducer
