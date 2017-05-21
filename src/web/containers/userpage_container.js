@@ -15,13 +15,13 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchUserInfo: () => {
-    dispatch(fetchUserInfo(ownProps.match.params.id))
+    dispatch(fetchUserInfo(ownProps.match.params.username))
   },
   follow: () => {
-    dispatch(follow(ownProps.match.params.id))
+    dispatch(follow(ownProps.match.params.username))
   },
   unfollow: () => {
-    dispatch(unfollow(ownProps.match.params.id))
+    dispatch(unfollow(ownProps.match.params.username))
   },
 })
 

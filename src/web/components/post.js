@@ -18,7 +18,7 @@ class Post extends React.PureComponent {
 
     return (
       <div style={styles.wrapper}>
-        <Link to={`/users/${user.id}`} style={styles.userName}>
+        <Link to={`/users/${user.username}`} style={styles.userName}>
           <UserIcon image={user.image} style={styles.userIcon} />
           {user.name}
         </Link>
