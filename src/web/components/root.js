@@ -16,6 +16,7 @@ import Landing from '../containers/landing_container'
 import Timeline from '../containers/timeline_container'
 import MyPage from '../containers/mypage_container'
 import UserPage from '../containers/userpage_container'
+import UserShow from '../containers/user_show/user_show_container'
 
 const Root = ({store}) => (
   <Provider store={store}>
@@ -26,8 +27,8 @@ const Root = ({store}) => (
           <div style={{paddingTop: 70}}>
             <OnlyBeforeSignedInRoute path='/' exact={true} component={Landing} />
             <PrivateRoute path='/timeline' component={Timeline} />
-            <PrivateRoute path='/mypage' component={MyPage} />
-            <PrivateRoute path='/users/:username' component={UserPage} />
+            <PrivateRoute path='/mypage' component={MyPage} isMypage={true} />
+            <PrivateRoute path='/users/:username' component={UserPage} isMyPage={false} />
           </div>
         </div>
       </MuiThemeProvider>
