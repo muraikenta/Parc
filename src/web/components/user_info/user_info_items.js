@@ -3,17 +3,17 @@ import UserInfoBtn from './user_info_btn'
 
 class UserInfoItems extends React.PureComponent {
   render() {
-    const {userInfo} = this.props
+    const {user} = this.props
     return (
-      <div style={styles.wrapper} >
-        <div style={styles.rows}>
-          <h3 style={styles.rowsItem}>{userInfo.name}</h3>
-          <UserInfoBtn style={styles.rowsItem} {...this.props.userBtnProps} />
+      <div style={styles.wrapper}>
+        <div style={styles.row}>
+          <h3 style={styles.rowItem}>{user.name}</h3>
+          <UserInfoBtn style={styles.rowItem} {...this.props.userBtnProps} />
         </div>
-        <div style={styles.rows}>
-          <p style={styles.rowsItem}>Tweets : {userInfo.tweetsCount}</p>
-          <p style={styles.rowsItem}>Follows : {userInfo.followsCount}</p>
-          <p style={styles.rowsItem}>Followers : {userInfo.followersCount}</p>
+        <div style={styles.row}>
+          <p style={styles.rowItem}>投稿 : {user.postsCount}</p>
+          <p style={styles.rowItem}>フォロー : {user.followingsCount}</p>
+          <p style={styles.rowItem}>フォロワー : {user.followersCount}</p>
         </div>
       </div>
     )
@@ -26,11 +26,11 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
   },
-  rows: {
+  row: {
     display: 'flex',
     alignItems: 'center',
   },
-  rowsItem: {
+  rowItem: {
     margin: 10,
   },
 }

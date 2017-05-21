@@ -56,7 +56,7 @@ class AfterLoginHeader extends React.PureComponent {
                 <span style={styles.userName}>{me.name}</span>
               </DropdownTrigger>
               <DropdownContent style={styles.dropdownContent}>
-                <RadiumLink to='/mypage'>マイページ</RadiumLink>
+                <RadiumLink to={`/users/${me.username}`}>マイページ</RadiumLink>
                 <a onClick={() => { this.props.signOut() }}>ログアウト</a>
               </DropdownContent>
             </Dropdown>

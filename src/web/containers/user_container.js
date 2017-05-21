@@ -1,20 +1,19 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import UserInfo from '../components/user_info/user_info'
 import {
   fetchUserInfo,
   follow,
   unfollow,
 } from '../../actions/user_info'
+import UserInfo from '../components/user_info/user_info'
 
 const mapStateToProps = (state) => ({
-  userInfo: state.userInfo.data,
-  isFetching: state.userInfo.isFetching,
-  error: state.userInfo.error,
+  user: state.user.data,
+  error: state.user.error,
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  fetchUserInfo: () => {
+  fetchUser: () => {
     dispatch(fetchUserInfo(ownProps.match.params.username))
   },
   follow: () => {
@@ -25,14 +24,14 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
 })
 
-class UserPageContainer extends React.PureComponent {
+class UserInfoContainer extends React.PureComponent {
   componentWillMount() {
-    this.props.fetchUserInfo()
+    this.props.fetchUser()
   }
 
   render() {
     const {
-      userInfo,
+      user,
       isFetching,
       error,
       follow,
@@ -40,19 +39,14 @@ class UserPageContainer extends React.PureComponent {
     } = this.props
 
     const displayContent = (() => {
-      if (isFetching) {
-        return (
-          <p>Now Loading...</p>
-        )
-      }
       if (error) {
         return (
-          <p>Not Found User</p>
+          <p>User Not Found</p>
         )
       }
       return (
         <UserInfo
-          userInfo={userInfo}
+          user={user}
           follow={follow}
           unfollow={unfollow}
         />
@@ -74,4 +68,4 @@ const styles = {
   },
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserPageContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(UserInfoContainer)

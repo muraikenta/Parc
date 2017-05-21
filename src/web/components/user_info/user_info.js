@@ -1,10 +1,11 @@
 import React from 'react'
-import UserIcon from './user_icon'
+import UserIcon from '../user_icon'
 import UserInfoItems from './user_info_items'
 
 class UserInfo extends React.PureComponent {
   render() {
-    const userBtnProps = this.props.userInfo.following ? ({
+    const {user} = this.props
+    const userBtnProps = user.following ? ({
       text: 'フォローを外す',
       onClick: this.props.unfollow,
     }) : ({
@@ -13,7 +14,7 @@ class UserInfo extends React.PureComponent {
     })
     return (
       <div style={styles.wrapper}>
-        <UserIcon {...this.props} />
+        <UserIcon src={user.image} size={200} />
         <UserInfoItems {...this.props} userBtnProps={userBtnProps} />
       </div>
     )
