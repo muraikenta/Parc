@@ -1,10 +1,24 @@
+// @flow
 import React from 'react'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import FormError from './form_error'
 
+type Props = {
+  headErrorMessages: string[],
+  onSubmit: (Object) => void,
+}
+
+type State = {
+  login: string,
+  password: string,
+}
+
 class SignInForm extends React.PureComponent {
-  constructor(props) {
+  props: Props
+  state: State
+
+  constructor(props: Props) {
     super(props)
     this.state = {
       login: '',
@@ -22,14 +36,14 @@ class SignInForm extends React.PureComponent {
     this.setState({password})
   }
 
-  onSubmitHandler(e) {
+  onSubmitHandler(e: Event) {
     const {login, password} = this.state
     e.preventDefault()
     this.props.onSubmit({login, password})
   }
 
   render() {
-    const {onSubmit, headErrorMessages} = this.props
+    const {headErrorMessages} = this.props
 
     return (
       <form
