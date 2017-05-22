@@ -17,7 +17,7 @@ type Props = {
 
 class Post extends React.PureComponent {
   props: Props
-  
+
   render() {
     const {
       user,
@@ -31,7 +31,7 @@ class Post extends React.PureComponent {
     return (
       <div style={styles.wrapper}>
         <Link to={`/users/${user.username}`} style={styles.userName}>
-          <UserIcon image={user.image} style={styles.userIcon} />
+          <UserIcon src={user.image} style={styles.userIcon} />
           {user.name}
         </Link>
         <Markdown source={content} />

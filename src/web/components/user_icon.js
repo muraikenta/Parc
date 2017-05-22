@@ -1,6 +1,13 @@
+// @flow
 import React from 'react'
 
-const UserIcon = ({src, size = 50, style = {}}) => (
+type Props = {
+  src: string,
+  size?: number,
+  style?: Object,
+}
+
+const UserIcon = ({src, size = 50, style = {}}: Props) => (
   <img
     src={src || defaultSrc}
     style={{
