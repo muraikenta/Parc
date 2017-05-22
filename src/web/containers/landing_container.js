@@ -1,3 +1,4 @@
+// @flow
 import React from 'react'
 import {connect} from 'react-redux'
 import Radium from 'radium'
@@ -21,8 +22,17 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
+type Props = {
+  isModalOpen: boolean,
+  identifier: string,
+  openModal: (string) => void,
+  closeModal: (string) => void,
+}
+
 @Radium
 class Landing extends React.PureComponent {
+  props: Props
+
   render() {
     return (
       <div style={styles.wrapper}>
@@ -86,7 +96,7 @@ const styles = {
     ':hover': {
       backgroundColor: 'rgba(255, 255, 255, 0.25)',
     },
-  }
+  },
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing)
