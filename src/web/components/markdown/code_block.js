@@ -1,5 +1,5 @@
 // @flow
-import React, {PropTypes} from 'react'
+import React from 'react'
 import highlight from 'highlight.js'
 
 type Props = {
@@ -8,6 +8,8 @@ type Props = {
 }
 
 class CodeBlock extends React.PureComponent {
+  props: Props
+
   componentDidMount() {
     this.highlightCode()
   }
@@ -22,11 +24,11 @@ class CodeBlock extends React.PureComponent {
 
   render() {
     return (
-        <pre>
-          <code ref='code' className={this.props.language}>
-            {this.props.literal}
-          </code>
-        </pre>
+      <pre>
+        <code ref='code' className={this.props.language}>
+          {this.props.literal}
+        </code>
+      </pre>
     )
   }
 }
