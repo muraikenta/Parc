@@ -1,8 +1,19 @@
+// @flow
 import React from 'react'
 import Modal from './modal'
 import Markdown from './markdown'
 
+type Props = {
+  isOpen: boolean,
+  postFormValue: string,
+  onRequestClose: () => void,
+  onPostFormChange: (string) => void,
+  submitPost: () => void,
+}
+
 class PostFormModal extends React.PureComponent {
+  props: Props
+
   render() {
     return (
       <Modal
