@@ -1,10 +1,21 @@
+// @flow
 import React from 'react'
+// TODO: import custom modal
 import Modal from 'react-modal'
 import {ModalTypes} from '../../constants/app'
 import SignUpForm from '../containers/sign_up_form_container'
 import SignInForm from '../containers/sign_in_form_container'
 
+type Props = {
+  isModalOpen: boolean,
+  identifier: string,
+  openModal: (string) => void,
+  closeModal: (string) => void,
+}
+
 class UserModal extends React.PureComponent {
+  props: Props
+
   render() {
     const {
       isModalOpen,
@@ -65,9 +76,9 @@ const styles = {
   modal: {
     overlay: {
       zIndex: 100,
-      backgroundColor : 'rgba(0, 0, 0, 0.75)',
+      backgroundColor: 'rgba(0, 0, 0, 0.75)',
     },
-    content : {
+    content: {
       position: 'absolute',
       top: '15%',
       padding: '40px 50px',
@@ -80,7 +91,7 @@ const styles = {
       borderRadius: '4px',
       outline: 'none',
       textAlign: 'center',
-    }
+    },
   },
   linkSection: {
     marginTop: 30,
