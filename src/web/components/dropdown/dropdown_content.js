@@ -3,8 +3,8 @@ import React, {PureComponent} from 'react'
 import Radium from 'radium'
 
 type Props = {
-  children: any,
-  isActive: boolean,
+  children?: any,
+  isActive?: boolean,
 }
 
 @Radium

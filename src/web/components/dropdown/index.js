@@ -9,7 +9,7 @@ type Props = {
   onHide?: () => void,
   onShow?: () => void,
   style?: Object,
-  children: any,
+  children?: any,
 }
 
 type State = {

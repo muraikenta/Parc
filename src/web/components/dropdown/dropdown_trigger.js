@@ -4,9 +4,9 @@ import {findDOMNode} from 'react-dom'
 import Radium from 'radium'
 
 type Props = {
-  children: any,
-  hide: () => void,
-  onClick: () => void,
+  children?: any,
+  hide?: () => void,
+  onClick?: () => void,
 }
 
 type State = {
@@ -38,7 +38,9 @@ class DropdownTrigger extends PureComponent {
   onWindowClick(event: Event) {
     const dropdownElement = findDOMNode(this)
     if (event.target !== dropdownElement && !dropdownElement.contains(event.target)) {
-      this.props.hide()
+      if (this.props.hide) {
+        this.props.hide()
+      }
     }
   }
 
