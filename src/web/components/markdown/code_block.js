@@ -1,5 +1,11 @@
+// @flow
 import React, {PropTypes} from 'react'
 import highlight from 'highlight.js'
+
+type Props = {
+  language: string,
+  literal: string,
+}
 
 class CodeBlock extends React.PureComponent {
     componentDidMount() {
@@ -23,11 +29,6 @@ class CodeBlock extends React.PureComponent {
         </pre>
       )
     }
-}
-
-CodeBlock.propTypes = {
-  literal: PropTypes.string,
-  language: PropTypes.string
 }
 
 export default CodeBlock
