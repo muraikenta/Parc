@@ -1,6 +1,14 @@
+// @flow
 import React from 'react'
 
+type Props = {
+  favoritesCount: number,
+  onClickHandler: () => void,
+}
+
 class UnfavoriteBtn extends React.PureComponent {
+  props: Props
+
   render() {
     return (
       <div style={{cursor: 'pointer'}} onClick={this.props.onClickHandler}>
