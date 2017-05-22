@@ -52,7 +52,7 @@ class AfterLoginHeader extends React.PureComponent {
           <div style={styles.menus}>
             <Dropdown style={styles.menu}>
               <DropdownTrigger>
-                <UserIcon src={me.image} style={styles.userIcon} />
+                <UserIcon src={me.image} size={35} />
                 <span style={styles.userName}>{me.name}</span>
               </DropdownTrigger>
               <DropdownContent style={styles.dropdownContent}>
@@ -110,10 +110,6 @@ const styles = {
   menu: {
     padding: '0 14px',
     cursor: 'pointer',
-  },
-  userIcon: {
-    width: 35,
-    height: 35,
   },
   userName: {
     display: 'inline-block',

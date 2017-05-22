@@ -14,7 +14,7 @@ import {
 import Header from '../containers/header'
 import Landing from '../containers/landing_container'
 import Timeline from '../containers/timeline_container'
-import User from '../containers/user_container'
+import User from '../containers/user/user_container'
 
 const Root = ({store}) => (
   <Provider store={store}>

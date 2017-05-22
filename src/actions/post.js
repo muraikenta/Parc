@@ -49,10 +49,10 @@ const createPostFail = (error) => {
   }
 }
 
-export const createPost = (post) => (dispatch) => {
-  dispatch(createPostRequest(post))
+export const createPost = (value) => (dispatch) => {
+  dispatch(createPostRequest())
 
-  api.post('/posts', {post})
+  api.post('/posts', {post: value})
      .then((json) => { dispatch(createPostSuccess(json.data)) })
      .catch((error) => { dispatch(createPostFail(error.message)) })
 }
