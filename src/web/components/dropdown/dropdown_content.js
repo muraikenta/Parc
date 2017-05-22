@@ -1,10 +1,17 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
+// @flow
+import React, {PureComponent} from 'react'
 import Radium from 'radium'
+
+type Props = {
+  children: any,
+  isActive: boolean,
+}
 
 @Radium
 class DropdownContent extends PureComponent {
-  render () {
+  props: Props
+
+  render() {
     const {children, isActive} = this.props
 
     if (!isActive) {
@@ -44,10 +51,5 @@ const styles = {
 }
 
 DropdownContent.displayName = 'DropdownContent'
-
-DropdownContent.propTypes = {
-  children: PropTypes.node,
-  isActive: PropTypes.bool,
-}
 
 export default DropdownContent

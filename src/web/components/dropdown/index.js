@@ -1,21 +1,34 @@
+// @flow
 import React, {cloneElement, PureComponent} from 'react'
-import PropTypes from 'prop-types'
-import {findDOMNode} from 'react-dom'
 import Radium from 'radium'
 
 import DropdownTrigger from './dropdown_trigger'
 import DropdownContent from './dropdown_content'
 
+type Props = {
+  onHide?: () => void,
+  onShow?: () => void,
+  style?: Object,
+  children: any,
+}
+
+type State = {
+  isActive: boolean,
+}
+
 @Radium
 class Dropdown extends PureComponent {
+  props: Props
+  state: State
+
   displayName: 'Dropdown'
 
-  constructor (props) {
+  constructor(props: Props) {
     super(props)
     this.state = {isActive: false}
   }
 
-  hide () {
+  hide() {
     this.setState({isActive: false}, () => {
       if (this.props.onHide) {
         this.props.onHide()
@@ -23,7 +36,7 @@ class Dropdown extends PureComponent {
     })
   }
 
-  show () {
+  show() {
     this.setState({isActive: true}, () => {
       if (this.props.onShow) {
         this.props.onShow()
@@ -31,7 +44,7 @@ class Dropdown extends PureComponent {
     })
   }
 
-  onToggleClick (event) {
+  onToggleClick(event: Event) {
     event.preventDefault()
     if (this.state.isActive) {
       this.hide()
@@ -40,7 +53,7 @@ class Dropdown extends PureComponent {
     }
   }
 
-  render () {
+  render() {
     const {children} = this.props
     const {isActive} = this.state
     // stick callback on trigger element
@@ -55,7 +68,7 @@ class Dropdown extends PureComponent {
             if (originalOnClick) {
               originalOnClick.apply(child, arguments)
             }
-          }
+          },
         })
       }
 
@@ -86,13 +99,6 @@ const styles = {
       background: '#f0f4f9',
     },
   },
-}
-
-Dropdown.propTypes = {
-  onHide: PropTypes.func,
-  onShow: PropTypes.func,
-  children: PropTypes.node,
-  style: PropTypes.object
 }
 
 export {DropdownTrigger, DropdownContent}
