@@ -1,3 +1,4 @@
+// @flow
 import React from 'react'
 import {connect} from 'react-redux'
 import {Route, Redirect} from 'react-router-dom'
@@ -7,7 +8,12 @@ const mapStateToProps = (state, ownProps) => {
   return {...ownProps, isSignedIn}
 }
 
-const PrivateRoute = ({component: Component, isSignedIn, ...rest}) => (
+type Props = {
+  component: Object,
+  isSignedIn: boolean,
+}
+
+const PrivateRoute = ({component: Component, isSignedIn, ...rest}: Props) => (
   <Route {...rest} render={(props) => (
     isSignedIn ? (
       <Component {...props} />
