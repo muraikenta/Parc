@@ -10,7 +10,7 @@ type Props = {
 
 class BeforeLoginHeader extends React.PureComponent {
   props: Props
-  
+
   render() {
     return (
       <div>

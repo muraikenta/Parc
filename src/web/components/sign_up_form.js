@@ -89,7 +89,7 @@ class SignUpForm extends React.PureComponent {
         <br />
         <TextField
           floatingLabelText='パスワード'
-          type="password"
+          type='password'
           style={styles.textField}
           ref='password'
           onChange={this.handleChangePassword.bind(this)}
@@ -99,7 +99,7 @@ class SignUpForm extends React.PureComponent {
           type='submit'
           primary={true}
           style={styles.submitButton}
-          label="新規登録"
+          label='新規登録'
         />
       </form>
     )

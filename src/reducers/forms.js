@@ -7,7 +7,7 @@ const forms = (state = {}, action) => {
         ...state,
         [action.formType]: {
           apiErrorMessages: action.errorMessages,
-        }
+        },
       }
 
     default:

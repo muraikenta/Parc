@@ -8,7 +8,7 @@ type Props = {
 
 class FavoriteBtn extends React.PureComponent {
   props: Props
-  
+
   render() {
     return (
       <div style={{cursor: 'pointer'}} onClick={this.props.onClickHandler}>

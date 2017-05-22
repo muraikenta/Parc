@@ -30,7 +30,7 @@ type Props = {
 
 class TimelineContainer extends React.PureComponent {
   props: Props
-  
+
   componentWillMount() {
     this.props.fetchPosts()
   }

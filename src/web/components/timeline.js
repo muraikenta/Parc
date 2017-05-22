@@ -10,7 +10,7 @@ type Props = {
 
 class Timeline extends React.PureComponent {
   props: Props
-  
+
   render() {
     return (
       <div style={style}>

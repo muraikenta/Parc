@@ -62,7 +62,7 @@ class SignInForm extends React.PureComponent {
         <TextField
           floatingLabelText='パスワード'
           style={styles.textField}
-          type="password"
+          type='password'
           ref='password'
           onChange={this.handleChangePassword.bind(this)}
         />
@@ -71,7 +71,7 @@ class SignInForm extends React.PureComponent {
           type='submit'
           primary={true}
           style={styles.submitButton}
-          label="ログイン"
+          label='ログイン'
         />
       </form>
     )
