@@ -21,6 +21,7 @@ const favoriteFail = (error) => {
   }
 }
 
+// TODO: 引数をpostIdに
 export const favorite = (post) => (dispatch) => {
   dispatch(favoriteRequest())
 
