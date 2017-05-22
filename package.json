@@ -8,6 +8,7 @@
     "watch": "webpack -w",
     "lint": "eslint ./src",
     "lint:fix": "npm run lint -- --fix",
+    "flow": "flow",
     "test": "jest"
   },
   "dependencies": {
@@ -49,6 +50,7 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^6.10.3",
     "eslint-plugin-standard": "^3.0.1",
+    "flow-bin": "^0.40.0",
     "jest": "19.0.2",
     "react-test-renderer": "16.0.0-alpha.6",
     "webpack": "^2.4.1"
