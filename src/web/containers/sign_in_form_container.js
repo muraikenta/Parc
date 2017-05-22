@@ -1,3 +1,4 @@
+// @flow
 import {connect} from 'react-redux'
 import {FormTypes} from '../../constants/app'
 import {signin} from '../../actions/session'
