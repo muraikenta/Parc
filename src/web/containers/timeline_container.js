@@ -1,3 +1,4 @@
+// @flow
 import _ from 'lodash'
 import React from 'react'
 import {bindActionCreators} from 'redux'
@@ -19,7 +20,17 @@ const mapDispatchToProps = (dispatch) => (
   bindActionCreators({fetchPosts, favorite, unfavorite}, dispatch)
 )
 
+type Props = {
+  posts: Object[],
+  error: ?string,
+  fetchPosts: () => void,
+  favorite: () => void,
+  unfavorite: () => void,
+}
+
 class TimelineContainer extends React.PureComponent {
+  props: Props
+  
   componentWillMount() {
     this.props.fetchPosts()
   }
