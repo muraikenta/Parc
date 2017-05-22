@@ -1,3 +1,4 @@
+// @flow
 import React from 'react'
 import {connect} from 'react-redux'
 import Radium from 'radium'
@@ -32,6 +33,15 @@ const mergeProps = (stateProps, dispatchProps) => {
       dispatch(signOut(stateProps.authData))
     },
   }
+}
+
+type Props = {
+  me: Object,
+  isPostFormModalOpen: boolean,
+  postFormValue: string,
+  error: ?string,
+  dispatch: Function,
+  signOut: () => void,
 }
 
 @Radium
