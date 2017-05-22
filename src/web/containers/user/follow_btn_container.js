@@ -1,3 +1,4 @@
+// @flow
 import React from 'react'
 import {connect} from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -27,7 +28,13 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
 })
 
-const FollowBtnContainer = ({user, follow, unfollow}) => (
+type Props = {
+  user: Object,
+  follow: () => void,
+  unfollow: () => void,
+}
+
+const FollowBtnContainer = ({user, follow, unfollow}: Props) => (
   <div>
     {user.following ? (
       <UnfollowBtn onClick={unfollow} />
