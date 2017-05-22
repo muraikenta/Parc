@@ -1,11 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {
-  fetchUser,
-  follow,
-  unfollow,
-} from '../../../actions/user'
+import {fetchUser} from '../../../actions/user'
 
 import UserIcon from '../../components/user_icon'
 import UserInfo from '../../components/user/user_info'
@@ -17,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     username: ownProps.match.params.username,
     user: user.data,
-    isMe: user.data.username == me.username,
+    isMe: user.data.username === me.username,
     error: state.user.error,
   }
 }
@@ -42,8 +38,6 @@ class UserContainer extends React.PureComponent {
       user,
       isMe,
       error,
-      follow,
-      unfollow,
     } = this.props
 
     const displayContent = (() => {

@@ -11,7 +11,6 @@ class UserModal extends React.PureComponent {
       identifier,
       openModal,
       closeModal,
-      signin,
     } = this.props
 
     const displayModal = (() => {

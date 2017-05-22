@@ -83,7 +83,6 @@ class AfterLoginHeader extends React.PureComponent {
 const styles = {
   nav: {
     borderBottom: '1px solid rgba(128, 128, 128, 0.19)',
-    height: 45,
     padding: '0 20px',
     display: 'flex',
     justifyContent: 'flex-end',
@@ -111,11 +110,6 @@ const styles = {
     padding: '0 14px',
     cursor: 'pointer',
   },
-  userName: {
-    display: 'inline-block',
-    lineHeight: '50px',
-    padding: '0 10px',
-  },
   dropdownContent: {
     top: 50,
     lineHeight: '16px',
@@ -132,14 +126,6 @@ const styles = {
     display: 'inline-block',
     lineHeight: '50px',
     padding: '0 10px',
-  },
-  dropdownContent: {
-    top: 50,
-    lineHeight: '16px',
-  },
-  postIcon: {
-    height: 30,
-    marginTop: 8,
   },
 }
 
