@@ -4,7 +4,11 @@ import {connect} from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton'
 import {follow, unfollow} from '../../../actions/user'
 
-const FollowBtn = ({onClick}) => (
+type BtnProps = {
+  onClick: () => void,
+}
+
+const FollowBtn = ({onClick}: BtnProps) => (
   <RaisedButton
     label='フォローする'
     primary={true}
@@ -12,7 +16,7 @@ const FollowBtn = ({onClick}) => (
   />
 )
 
-const UnfollowBtn = ({onClick}) => (
+const UnfollowBtn = ({onClick}: BtnProps) => (
   <RaisedButton
     label='フォロー解除'
     onClick={onClick}
