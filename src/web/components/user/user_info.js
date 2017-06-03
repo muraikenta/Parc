@@ -1,6 +1,13 @@
+// @flow
 import React from 'react'
 
+type Props = {
+  user: Object,
+}
+
 class UserInfo extends React.PureComponent {
+  props: Props
+
   render() {
     const {user} = this.props
     return (

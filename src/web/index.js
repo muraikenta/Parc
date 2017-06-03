@@ -1,3 +1,4 @@
+// @flow
 import '../lib/lodash_mixin'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import React from 'react'

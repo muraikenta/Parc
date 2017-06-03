@@ -1,3 +1,4 @@
+// @flow
 import React from 'react'
 import {connect} from 'react-redux'
 
@@ -22,7 +23,17 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchUser: (username) => { dispatch(fetchUser(username)) },
 })
 
+type Props = {
+  username: string,
+  user: Object,
+  isMe: boolean,
+  error: ?string,
+  fetchUser: (string) => void,
+}
+
 class UserContainer extends React.PureComponent {
+  props: Props
+
   componentWillMount() {
     this.props.fetchUser(this.props.username)
   }

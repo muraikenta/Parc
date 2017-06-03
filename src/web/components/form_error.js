@@ -1,7 +1,13 @@
+// @flow
 import React from 'react'
 import Radium from 'radium'
 
-const FormError = ({messages = []}) => {
+type Props = {
+  messages: string[],
+}
+
+const FormError = (props: Props) => {
+  const {messages} = props
   if (messages.length === 0) {
     return <div />
   }
@@ -20,6 +26,7 @@ const styles = {
     marginTop: 10,
     color: '#e40303',
   },
+  item: {},
 }
 
 export default Radium(FormError)

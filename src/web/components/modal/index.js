@@ -1,7 +1,10 @@
+// @flow
 import React from 'react'
 import ReactModal from 'react-modal'
 
-const Modal = ({style={}, ...props}) => (
+type Props = Object
+
+const Modal = ({style = {}, ...props}: Props) => (
   <ReactModal
     style={{...defaultStyle, ...style}}
     {...props}
@@ -13,7 +16,7 @@ const Modal = ({style={}, ...props}) => (
 const defaultStyle = {
   overlay: {
     zIndex: 100,
-    backgroundColor : 'rgba(0, 0, 0, 0.75)',
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
   },
   content: {},
 }

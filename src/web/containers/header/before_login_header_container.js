@@ -1,9 +1,16 @@
+// @flow
 import React from 'react'
 import {connect} from 'react-redux'
 import {ModalTypes} from '../../../constants/app'
 import {openModal} from '../../../actions/modal'
 
+type Props = {
+  dispatch: Function,
+}
+
 class BeforeLoginHeader extends React.PureComponent {
+  props: Props
+
   render() {
     return (
       <div>

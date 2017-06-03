@@ -1,3 +1,4 @@
+// @flow
 import React from 'react'
 import {connect} from 'react-redux'
 import AfterLoginHeader from './after_login_header_container'
@@ -8,7 +9,11 @@ const mapStateToProps = (state) => {
   return {isSignedIn}
 }
 
-const Header = ({isSignedIn}) => (
+type Props = {
+  isSignedIn: boolean,
+}
+
+const Header = ({isSignedIn}: Props) => (
   isSignedIn ? <AfterLoginHeader /> : <BeforeLoginHeader />
 )
 

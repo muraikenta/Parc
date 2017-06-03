@@ -1,3 +1,4 @@
+// @flow
 import React from 'react'
 import {connect} from 'react-redux'
 import Radium from 'radium'
@@ -20,7 +21,6 @@ const mapStateToProps = (state) => ({
   authData: state.session.authData,
   isPostFormModalOpen: state.postForm.isModalOpen,
   postFormValue: state.postForm.value,
-  error: state.postForm.error,
 })
 
 const mergeProps = (stateProps, dispatchProps) => {
@@ -34,8 +34,18 @@ const mergeProps = (stateProps, dispatchProps) => {
   }
 }
 
+type Props = {
+  me: Object,
+  isPostFormModalOpen: boolean,
+  postFormValue: string,
+  dispatch: Function,
+  signOut: () => void,
+}
+
 @Radium
 class AfterLoginHeader extends React.PureComponent {
+  props: Props
+
   submitPost() {
     const {dispatch, postFormValue} = this.props
     dispatch(createPost({content: postFormValue}))

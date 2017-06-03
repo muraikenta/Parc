@@ -1,35 +1,51 @@
-import React, { PureComponent } from 'react';
+// @flow
+import React, {PureComponent} from 'react'
 import {findDOMNode} from 'react-dom'
-import PropTypes from 'prop-types';
 import Radium from 'radium'
+
+type Props = {
+  children?: any,
+  hide?: () => void,
+  onClick?: () => void,
+}
+
+type State = {
+  isActive: boolean,
+}
 
 @Radium
 class DropdownTrigger extends PureComponent {
-  constructor (props) {
+  props: Props
+  state: State
+  _onWindowClick: (Event) => void
+
+  constructor(props: Props) {
     super(props)
     this.state = {isActive: false}
     this._onWindowClick = this.onWindowClick.bind(this)
   }
 
-  componentDidMount () {
+  componentDidMount() {
     window.addEventListener('click', this._onWindowClick)
     window.addEventListener('touchstart', this._onWindowClick)
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     window.removeEventListener('click', this._onWindowClick)
     window.removeEventListener('touchstart', this._onWindowClick)
   }
 
-  onWindowClick (event) {
+  onWindowClick(event: Event) {
     const dropdownElement = findDOMNode(this)
     if (event.target !== dropdownElement && !dropdownElement.contains(event.target)) {
-      this.props.hide()
+      if (this.props.hide) {
+        this.props.hide()
+      }
     }
   }
 
-  render () {
-    const { children, onClick } = this.props
+  render() {
+    const {children, onClick} = this.props
     return (
       <a onClick={onClick}>
         {children}
@@ -38,10 +54,6 @@ class DropdownTrigger extends PureComponent {
   }
 }
 
-DropdownTrigger.displayName = 'DropdownTrigger';
-
-DropdownTrigger.propTypes = {
-  children: PropTypes.node,
-}
+DropdownTrigger.displayName = 'DropdownTrigger'
 
 export default DropdownTrigger

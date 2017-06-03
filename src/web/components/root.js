@@ -1,3 +1,4 @@
+// @flow
 import React from 'react'
 import {Provider} from 'react-redux'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
@@ -16,8 +17,12 @@ import Landing from '../containers/landing_container'
 import Timeline from '../containers/timeline_container'
 import User from '../containers/user/user_container'
 
-const Root = ({store}) => (
-  <Provider store={store}>
+type Props = {
+  store: Object,
+}
+
+const Root = (props: Props) => (
+  <Provider store={props.store}>
     <Router>
       <MuiThemeProvider muiTheme={getMuiTheme(MaterialCustomTheme)}>
         <div>

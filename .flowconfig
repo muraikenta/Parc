@@ -8,6 +8,9 @@
 ; Ignore unexpected extra "@providesModule"
 .*/node_modules/.*/node_modules/fbjs/.*
 
+; Ignore react-native temporally because of mismatch of react version
+.*/node_modules/react-native/.*
+
 ; Ignore duplicate module providers
 ; For RN Apps installed via npm, "Libraries" folder is inside
 ; "node_modules/react-native" but in the source repo it is in the root
@@ -27,6 +30,8 @@ emoji=true
 module.system=haste
 
 experimental.strict_type_args=true
+
+esproposal.decorators=ignore
 
 munge_underscores=true
 

@@ -1,15 +1,16 @@
+// @flow
 import React from 'react'
 import Post from '../components/post'
 
-const style = {
-  display: 'flex',
-  flexDirection: 'column',
-  marginTop: 30,
-  borderTop: '1px solid #e6ecf0',
-  background: 'white',
+type Props = {
+  posts: Object[],
+  favorite: (Object) => void,
+  unfavorite: (Object) => void,
 }
 
 class Timeline extends React.PureComponent {
+  props: Props
+
   render() {
     return (
       <div style={style}>
@@ -24,6 +25,14 @@ class Timeline extends React.PureComponent {
       </div>
     )
   }
+}
+
+const style = {
+  display: 'flex',
+  flexDirection: 'column',
+  marginTop: 30,
+  borderTop: '1px solid #e6ecf0',
+  background: 'white',
 }
 
 export default Timeline

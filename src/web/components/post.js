@@ -1,3 +1,4 @@
+// @flow
 import React from 'react'
 import {Link} from 'react-router-dom'
 import Markdown from './markdown'
@@ -5,7 +6,18 @@ import UserIcon from './user_icon'
 import FavoriteBtn from './favorite_btns/favorite_btn'
 import UnfavoriteBtn from './favorite_btns/unfavorite_btn'
 
+type Props = {
+  user: Object,
+  content: string,
+  favorited: boolean,
+  favoritesCount: number,
+  favorite: () => void,
+  unfavorite: () => void,
+}
+
 class Post extends React.PureComponent {
+  props: Props
+
   render() {
     const {
       user,
@@ -19,7 +31,7 @@ class Post extends React.PureComponent {
     return (
       <div style={styles.wrapper}>
         <Link to={`/users/${user.username}`} style={styles.userName}>
-          <UserIcon image={user.image} style={styles.userIcon} />
+          <UserIcon src={user.image} style={styles.userIcon} />
           {user.name}
         </Link>
         <Markdown source={content} />

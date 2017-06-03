@@ -1,3 +1,4 @@
+// @flow
 import React from 'react'
 import {connect} from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -11,8 +12,19 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
 })
 
+type Props = {
+  updateProfile: (string) => void,
+}
+
+type State = {
+  isModalOpen: boolean,
+}
+
 class EditProfileBtnContainer extends React.PureComponent {
-  constructor(props) {
+  props: Props
+  state: State
+
+  constructor(props: Props) {
     super(props)
     this.state = this.initialState
   }

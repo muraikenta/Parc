@@ -11,13 +11,13 @@ const modal = (state = initialState, action) => {
       return {
         ...state,
         isModalOpen: true,
-        identifier: action.identifier
+        identifier: action.identifier,
       }
     case ActionTypes.MODAL__CLOSE:
       return {
         ...state,
         isModalOpen: false,
-        identifier: action.identifier
+        identifier: action.identifier,
       }
     default:
       return state

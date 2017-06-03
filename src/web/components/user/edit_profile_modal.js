@@ -1,10 +1,23 @@
+// @flow
 import React from 'react'
-// import Modal from 'react-modal'
 import ReactMarkdown from 'react-markdown'
 import RaisedButton from 'material-ui/RaisedButton'
 import Modal from '../modal'
 
+type Props = {
+  isOpen: boolean,
+  onRequestClose: () => void,
+  onSubmit: (string) => void,
+}
+
+type State = {
+  value: string,
+}
+
 class EditProfileModal extends React.PureComponent {
+  props: Props
+  state: State
+
   constructor() {
     super()
     this.state = {
@@ -12,7 +25,7 @@ class EditProfileModal extends React.PureComponent {
     }
   }
 
-  onChange(e) {
+  onChange(e: Event) {
     this.setState({value: e.target.value})
   }
 

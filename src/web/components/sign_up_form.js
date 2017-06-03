@@ -1,10 +1,26 @@
+// @flow
 import React from 'react'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import FormError from './form_error'
 
+type Props = {
+  headErrorMessages: string[],
+  onSubmit: (Object) => void,
+}
+
+type State = {
+  name: string,
+  username: string,
+  email: string,
+  password: string,
+}
+
 class SignUpForm extends React.PureComponent {
-  constructor(props) {
+  props: Props
+  state: State
+
+  constructor(props: Props) {
     super(props)
     this.state = {
       name: '',
@@ -34,14 +50,14 @@ class SignUpForm extends React.PureComponent {
     this.setState({password})
   }
 
-  onSubmitHandler(e) {
+  onSubmitHandler(e: Event) {
     const {name, username, email, password} = this.state
     e.preventDefault()
     this.props.onSubmit({name, username, email, password})
   }
 
   render() {
-    const {onSubmit, headErrorMessages} = this.props
+    const {headErrorMessages} = this.props
 
     return (
       <form
@@ -73,7 +89,7 @@ class SignUpForm extends React.PureComponent {
         <br />
         <TextField
           floatingLabelText='パスワード'
-          type="password"
+          type='password'
           style={styles.textField}
           ref='password'
           onChange={this.handleChangePassword.bind(this)}
@@ -83,7 +99,7 @@ class SignUpForm extends React.PureComponent {
           type='submit'
           primary={true}
           style={styles.submitButton}
-          label="新規登録"
+          label='新規登録'
         />
       </form>
     )
