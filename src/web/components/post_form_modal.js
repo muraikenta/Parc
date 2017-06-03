@@ -1,39 +1,6 @@
 import React from 'react'
-import Modal from 'react-modal'
+import Modal from './modal'
 import Markdown from './markdown'
-
-const styles = {
-  flexContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100%',
-  },
-  flexHeader: {
-    flex: 0,
-    textAlign: 'center',
-  },
-  contents: {
-    flex: 1,
-    display: 'flex',
-  },
-  content: {
-    flex: 1,
-    height: '100%',
-    overflow: 'scroll',
-  },
-  textarea: {
-    padding: '0 2px',
-  },
-  markdownPreview: {
-    padding: '0 20px',
-    border: '1px solid black',
-  },
-  flexFooter: {
-    flex: 0,
-    paddingTop: 20,
-    textAlign: 'center',
-  },
-}
 
 class PostFormModal extends React.PureComponent {
   render() {
@@ -70,6 +37,39 @@ class PostFormModal extends React.PureComponent {
       </Modal>
     )
   }
+}
+
+const styles = {
+  flexContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
+  },
+  flexHeader: {
+    flex: 0,
+    textAlign: 'center',
+  },
+  contents: {
+    flex: 1,
+    display: 'flex',
+  },
+  content: {
+    flex: 1,
+    height: '100%',
+    overflow: 'scroll',
+  },
+  textarea: {
+    padding: '0 2px',
+  },
+  markdownPreview: {
+    padding: '0 20px',
+    border: '1px solid black',
+  },
+  flexFooter: {
+    flex: 0,
+    paddingTop: 20,
+    textAlign: 'center',
+  },
 }
 
 export default PostFormModal

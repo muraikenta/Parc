@@ -1,32 +1,32 @@
 import api from '../lib/api'
 import {ActionTypes} from '../constants/app'
 
-const fetchUserInfoRequest = () => {
+const fetchUserRequest = () => {
   return {
     type: ActionTypes.USER__FETCH_REQUEST,
   }
 }
 
-const fetchUserInfoSuccess = (data) => {
+const fetchUserSuccess = (data) => {
   return {
     type: ActionTypes.USER__FETCH_SUCCESS,
     data,
   }
 }
 
-const fetchUserInfoFail = (error) => {
+const fetchUserFail = (error) => {
   return {
     type: ActionTypes.USER__FETCH_FAIL,
     error,
   }
 }
 
-export const fetchUserInfo = (id) => (dispatch) => {
-  dispatch(fetchUserInfoRequest())
+export const fetchUser = (id) => (dispatch) => {
+  dispatch(fetchUserRequest())
 
   api.get(`/users/${id}`)
-   .then((json) => { dispatch(fetchUserInfoSuccess(json.data)) })
-   .catch((error) => { dispatch(fetchUserInfoFail(error.message)) })
+   .then((json) => { dispatch(fetchUserSuccess(json.data)) })
+   .catch((error) => { dispatch(fetchUserFail(error.message)) })
 }
 
 const followRequest = () => {

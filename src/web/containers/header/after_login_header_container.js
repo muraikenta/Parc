@@ -52,11 +52,11 @@ class AfterLoginHeader extends React.PureComponent {
           <div style={styles.menus}>
             <Dropdown style={styles.menu}>
               <DropdownTrigger>
-                <UserIcon src={me.image} style={styles.userIcon} />
+                <UserIcon src={me.image} size={35} />
                 <span style={styles.userName}>{me.name}</span>
               </DropdownTrigger>
               <DropdownContent style={styles.dropdownContent}>
-                <RadiumLink to='/mypage'>マイページ</RadiumLink>
+                <RadiumLink to={`/users/${me.username}`}>マイページ</RadiumLink>
                 <a onClick={() => { this.props.signOut() }}>ログアウト</a>
               </DropdownContent>
             </Dropdown>
@@ -83,7 +83,6 @@ class AfterLoginHeader extends React.PureComponent {
 const styles = {
   nav: {
     borderBottom: '1px solid rgba(128, 128, 128, 0.19)',
-    height: 45,
     padding: '0 20px',
     display: 'flex',
     justifyContent: 'flex-end',
@@ -111,15 +110,6 @@ const styles = {
     padding: '0 14px',
     cursor: 'pointer',
   },
-  userIcon: {
-    width: 35,
-    height: 35,
-  },
-  userName: {
-    display: 'inline-block',
-    lineHeight: '50px',
-    padding: '0 10px',
-  },
   dropdownContent: {
     top: 50,
     lineHeight: '16px',
@@ -136,14 +126,6 @@ const styles = {
     display: 'inline-block',
     lineHeight: '50px',
     padding: '0 10px',
-  },
-  dropdownContent: {
-    top: 50,
-    lineHeight: '16px',
-  },
-  postIcon: {
-    height: 30,
-    marginTop: 8,
   },
 }
 

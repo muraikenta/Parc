@@ -1,12 +1,18 @@
 import React from 'react'
 
-const UserIcon = ({src, style = {}}) => (
-  <img src={src || defaultSrc} style={{...defaultStyle, ...style}} />
+const UserIcon = ({src, size = 50, style = {}}) => (
+  <img
+    src={src || defaultSrc}
+    style={{
+      ...defaultStyle,
+      ...style,
+      width: size,
+      height: size,
+    }}
+  />
 )
 
 const defaultStyle = {
-  width: 50,
-  height: 50,
   borderRadius: '20%',
 }
 

@@ -6,7 +6,7 @@ const initialState = {
   error: null,
 }
 
-const userInfo = (state = initialState, action) => {
+const user = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.USER__FETCH_REQUEST:
       return {
@@ -30,13 +30,10 @@ const userInfo = (state = initialState, action) => {
     case ActionTypes.USER__UNFOLLOW_SUCCESS:
       return {
         ...state,
-        data: {
-          ...state.data,
-          following: action.data.following,
-        },
+        data: action.data,
       }
     default:
       return state
   }
 }
-export default userInfo
+export default user

@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import Radium from 'radium'
 import {ModalTypes} from '../../constants/app'
 import {openModal, closeModal} from '../../actions/modal'
-import {signup, signin} from '../../actions/session'
 import UserModal from '../components/user_modal'
 
 const mapStateToProps = (state) => ({
@@ -19,9 +18,6 @@ const mapDispatchToProps = (dispatch) => {
     closeModal: (identifier) => {
       dispatch(closeModal(identifier))
     },
-    signin: (email, password) => {
-      dispatch(signin({email, password}))
-    }
   }
 }
 
@@ -45,8 +41,6 @@ class Landing extends React.PureComponent {
             identifier={this.props.identifier}
             openModal={this.props.openModal}
             closeModal={this.props.closeModal}
-            signup={this.props.signup}
-            signin={this.props.signin}
           />
         </div>
       </div>

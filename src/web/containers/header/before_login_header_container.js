@@ -42,7 +42,7 @@ const styles = {
   },
   loginBtn: {
     cursor: 'pointer',
-  }
+  },
 }
 
 export default connect()(BeforeLoginHeader)
